@@ -22,7 +22,6 @@ logging.basicConfig(
 logging.getLogger("gql").setLevel(logging.WARNING)
 
 client = commands.Bot(intents=intents)
-status = "https://youtu.be/QPqf2coKBl8"
 
 # Loads all Cogs
 path = Path(__file__).parents[0]
@@ -35,7 +34,9 @@ for items in cogsList:
 @client.event
 async def on_ready():
     logging.info("Reina is ready!")
-    await client.change_presence(activity=discord.Game(status))
+    await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.watching, name="/help")
+    )
 
 
 client.run(Token)

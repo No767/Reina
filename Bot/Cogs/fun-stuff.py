@@ -18,7 +18,7 @@ class fun_stuff(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="ship", description="Calcuates how much love a person has")
+    @slash_command(name="ship", description="Calculates how much love a person has")
     async def shipPerson(
         self,
         ctx,
