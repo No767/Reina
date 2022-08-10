@@ -4,10 +4,11 @@
 
 ![Reina](./Assets/reina-logo-resized.png)
 
-A Fork of Beryl with improved features
 
 [![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml)
 
+
+A Fork of Beryl with improved features
 
 <div align=left>
 
