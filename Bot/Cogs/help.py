@@ -290,6 +290,16 @@ class ReinaHelp(commands.Cog):
                 value="Returns the amount of players in each game server",
                 inline=True,
             )
+            embedVar.add_field(
+                name="`version`",
+                value="Returns the current version of Reina",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`uptime`",
+                value="Returns the uptime for Reina",
+                inline=True,
+            )
             embedVar.set_author(name="Help - Utility", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
 
