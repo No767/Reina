@@ -35,4 +35,4 @@ This is meant to be a private bot, so no public listings or invites of Reina wil
 
 ## Licensing
 
-Probably all rights reversed, but considering an open source license for this project
+Parts of Reina come directly from Beryl, and thus credit needs to be given to such places. Any modifications that Reina makes to Beryl are licensed under Apache-2.0.
