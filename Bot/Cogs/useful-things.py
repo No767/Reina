@@ -43,38 +43,6 @@ class usefulThings(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @slash_command(
-        name="youtubedltte",
-        description="Apparently downloads tiktok videos and sends it",
-    )
-    async def youtubedltte(
-        self, ctx, url: Option(str, "The url of the video to download")
-    ):
-        try:
-            ttfilter = re.compile(r"^https:\/\/vm.tiktok.com\/\w+\/$")
-            if ttfilter.match(url):
-                await ctx.send("downloading...")
-                os.system(f"youtube-dl {url} -o youtubedl.mp4")
-                file_size = os.path.getsize("youtubedl.mp4")
-                await ctx.send(f"file size: {file_size} max 8000000")
-                if file_size > 8000000:
-                    await ctx.send("didnt even try sending video. file too big")
-                else:
-                    await ctx.send("sending...")
-                    await ctx.send(file=discord.File(r"youtubedl.mp4"))
-                os.system("rm youtubedl.mp4")
-            else:
-                await ctx.send(
-                    r"link does not match regex `^https:\/\/vm.tiktok.com\/\w+\/$`. video was not downloaded"
-                )
-        except Exception as e:
-            embedError = discord.Embed()
-            embedError.description = "Something went wrong. Please try again"
-            embedError.add_field(name="Error", value=e, inline=True)
-            await ctx.respond(embed=embedError)
-
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
     @slash_command(name="ping", description="The Lag-o-meter, often lies")
     async def pingChecker(self, ctx):
         embed = discord.Embed()

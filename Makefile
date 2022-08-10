@@ -12,7 +12,7 @@ init:
 	echo 'Beryl_Keys="$(BERYL_TOKENS)"' >> Bot/.env
 
 run:
-	poetry run python Bot/beryl.py
+	poetry run python Bot/reina.py
 
 deploy:
-	sudo docker build -t no767/beryl:$(DOCKER_TAG_VERSION) --build-arg PM2_PUBLIC_KEY_INGEST=$(PM2_PUBLIC_KEY_INGEST) --build-arg PM2_SECRET_KEY_INGEST=$(PM2_SECRET_KEY_INGEST) -f ./Dockerfile .
+	sudo docker build -t no767/reina:$(DOCKER_TAG_VERSION) --build-arg PM2_PUBLIC_KEY_INGEST=$(PM2_PUBLIC_KEY_INGEST) --build-arg PM2_SECRET_KEY_INGEST=$(PM2_SECRET_KEY_INGEST) -f ./Dockerfile .

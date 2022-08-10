@@ -15,6 +15,13 @@ else
     echo "Missing Hypixel API key! HYPIXEL_API_KEY environment variable is not set."
 fi 
 
+if [[ -v TENOR_API_KEY ]]; then
+    echo "Tenor_API_Key=${TENOR_API_KEY}" >> /Reina/Bot/.env
+else
+    echo "Missing Tenor API key! TENOR_API_KEY environment variable is not set."
+fi 
+
+
 if [[ -v POSTGRES_PASSWORD ]]; then
     echo "Postgres_Password=${POSTGRES_PASSWORD}" >> /Reina/Bot/.env
 else
