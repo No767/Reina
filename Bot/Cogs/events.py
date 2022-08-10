@@ -74,12 +74,8 @@ class UserEvents(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    events = SlashCommandGroup(
-        "events", "Commands for Beryl's Events System"
-    )
-    eventsView = events.create_subgroup(
-        "view", "View the events"
-    )
+    events = SlashCommandGroup("events", "Commands for Beryl's Events System")
+    eventsView = events.create_subgroup("view", "View the events")
     eventsDelete = events.create_subgroup(
         "delete",
         "Delete commands for the events system",

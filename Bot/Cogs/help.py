@@ -1,41 +1,62 @@
-import asyncio
-
 import discord
 import discord.ext
-import uvloop
 from discord.commands import Option, slash_command
 from discord.ext import commands
+
 
 class ReinaHelp(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.last_member = None
-        
-    @slash_command(name="help", description="The help command for Reina", guild_ids=[1006845509857714277])
-    async def reinaHelp(self, ctx, *, category: Option(str, "The different categories that Reina has", choices=["AniList", "DisQuest", "Events", "Fun-Stuff", "MyAnimeList", "Tenor", "Utility", "Waifu"], required=False)):
+
+    @slash_command(
+        name="help",
+        description="The help command for Reina",
+        guild_ids=[1006845509857714277],
+    )
+    async def reinaHelp(
+        self,
+        ctx,
+        *,
+        category: Option(
+            str,
+            "The different categories that Reina has",
+            choices=[
+                "AniList",
+                "DisQuest",
+                "Events",
+                "Fun-Stuff",
+                "MyAnimeList",
+                "Tenor",
+                "Utility",
+                "Waifu",
+            ],
+            required=False,
+        )
+    ):
         if category is None:
             bot = self.bot
-            embed = discord.Embed(title="Help", color=discord.Color.from_rgb(255, 196, 253))
+            embed = discord.Embed(
+                title="Help", color=discord.Color.from_rgb(255, 196, 253)
+            )
             embed.add_field(name="AniList", value="`/help AniList`", inline=True)
             embed.add_field(name="DisQuest", value="`/help DisQuest`", inline=True)
             embed.add_field(name="Events", value="`/help Events`", inline=True)
             embed.add_field(name="Fun Stuff", value="`/help Fun-Stuff`", inline=True)
             embed.add_field(
-                    name="MyAnimeList", value="`/help MyAnimeList`", inline=True
-                )
+                name="MyAnimeList", value="`/help MyAnimeList`", inline=True
+            )
             embed.add_field(name="Tenor", value="`/help Tenor`", inline=True)
             embed.add_field(name="Utility", value="`/help Utility`", inline=True)
             embed.add_field(name="Waifu", value="`/help Waifu`", inline=True)
             embed.set_author(
-                    name="Help",
-                    url=discord.Embed.Empty,
-                    icon_url=bot.user.display_avatar,
-                )
-            embed.set_footer(
-                    text='Remember, the command prefix for this bot is "/"'
-                )
+                name="Help",
+                url=discord.Embed.Empty,
+                icon_url=bot.user.display_avatar,
+            )
+            embed.set_footer(text='Remember, the command prefix for this bot is "/"')
             await ctx.respond(embed=embed)
-            
+
         if category in ["AniList"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -70,11 +91,9 @@ class ReinaHelp(commands.Cog):
                 value="Searches up to 25 actors on AniList",
                 inline=True,
             )
-            embedVar.set_author(
-                name="Help - AniList", icon_url=bot.user.display_avatar
-            )
+            embedVar.set_author(name="Help - AniList", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
-            
+
         if category in ["DisQuest"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -103,8 +122,7 @@ class ReinaHelp(commands.Cog):
                 name="Help - DisQuest", icon_url=bot.user.display_avatar
             )
             await ctx.respond(embed=embedVar)
-            
-            
+
         if category in ["Events"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -144,11 +162,9 @@ class ReinaHelp(commands.Cog):
                 value="View all of your past events",
                 inline=True,
             )
-            embedVar.set_author(
-                name="Help - Events", icon_url=bot.user.display_avatar
-            )
+            embedVar.set_author(name="Help - Events", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
-            
+
         if category in ["Fun-Stuff"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -176,7 +192,7 @@ class ReinaHelp(commands.Cog):
                 name="Help - Fun Stuff", icon_url=bot.user.display_avatar
             )
             await ctx.respond(embed=embedVar)
-                
+
         if category in ["MyAnimeList"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -218,8 +234,7 @@ class ReinaHelp(commands.Cog):
                 name="Help - MyAnimeList", icon_url=bot.user.display_avatar
             )
             await ctx.respond(embed=embedVar)
-                
-                
+
         if category in ["Tenor"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -254,11 +269,9 @@ class ReinaHelp(commands.Cog):
                 value="Gives out 25 random gifs from Tenor based on the given search term",
                 inline=True,
             )
-            embedVar.set_author(
-                name="Help - Tenor", icon_url=bot.user.display_avatar
-            )
+            embedVar.set_author(name="Help - Tenor", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
-            
+
         if category in ["Utility"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -277,11 +290,9 @@ class ReinaHelp(commands.Cog):
                 value="Returns the amount of players in each game server",
                 inline=True,
             )
-            embedVar.set_author(
-                name="Help - Utility", icon_url=bot.user.display_avatar
-            )
+            embedVar.set_author(name="Help - Utility", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
-            
+
         if category in ["Waifu"]:
             bot = self.bot
             embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
@@ -301,11 +312,9 @@ class ReinaHelp(commands.Cog):
                 value="Returns a random image of a waifu from waifu.pics",
                 inline=True,
             )
-            embedVar.set_author(
-                name="Help - Waifu", icon_url=bot.user.display_avatar
-            )
+            embedVar.set_author(name="Help - Waifu", icon_url=bot.user.display_avatar)
             await ctx.respond(embed=embedVar)
-                
-                
+
+
 def setup(bot):
     bot.add_cog(ReinaHelp(bot))
