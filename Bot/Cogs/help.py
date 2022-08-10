@@ -12,7 +12,6 @@ class ReinaHelp(commands.Cog):
     @slash_command(
         name="help",
         description="The help command for Reina",
-        guild_ids=[1006845509857714277],
     )
     async def reinaHelp(
         self,

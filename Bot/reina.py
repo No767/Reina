@@ -12,7 +12,7 @@ intents.message_content = True
 
 load_dotenv()
 
-Token = os.getenv("Reina_Dev_Token")
+Token = os.getenv("Reina_Token")
 
 logging.basicConfig(
     level=logging.INFO,
