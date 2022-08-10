@@ -5,7 +5,7 @@
 ![Reina](./Assets/reina-logo-resized.png)
 
 
-[![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml)
+[![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml) [![CodeQL](https://github.com/No767/Reina/actions/workflows/codeql.yml/badge.svg?branch=dev)](https://github.com/No767/Reina/actions/workflows/codeql.yml) [![Snyk](https://github.com/No767/Reina/actions/workflows/snyk.yml/badge.svg?branch=dev)](https://github.com/No767/Reina/actions/workflows/snyk.yml)
 
 
 A Fork of Beryl with improved features
