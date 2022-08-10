@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  reina:
+    container_name: Reina
+    build:
+      context: .
+      dockerfile: ./Alpine-Docker/Dockerfile
+    environment:
+      - REINA_TOKEN=token
+      - HYPIXEL_API_KEY=key
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_IP=ip
+      - POSTGRES_USER=user
+      - POSTGRES_DISQUEST_DATABASE=db
+      - POSTGRES_EVENTS_DATABASE=db
+      - POSTGRES_PORT=5432
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 0s
+        max_attempts: 3
+        window: 120s
+      mode: replicated
+
+  postgres:
+    container_name: Reina-Postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=Reina
+      - POSTGRES_DB=Reina
+    volumes:
+      - reina_postgres_volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  reina_postgres_volume:
