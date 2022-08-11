@@ -38,7 +38,9 @@ class EventTaskProcess:
         """Checks if the event has passed, and then set the value as passed. This will happen for every 1 hour"""
         while True:
             await asyncio.sleep(3600)
-            mainRes = await eventUtils.obtainEventsBool(False, uri=CONNECTION_URI)
+            mainRes = await eventUtils.obtainEventsBool(
+                event_passed=False, uri=CONNECTION_URI
+            )
             try:
                 if len(mainRes) == 0:
                     raise NoItemsError
@@ -50,11 +52,13 @@ class EventTaskProcess:
                             await eventUtils.setEventPassed(
                                 uuid=dict(mainItems)["event_item_uuid"],
                                 event_passed=True,
+                                uri=CONNECTION_URI,
                             )
                         elif eventParsedDate == today:
                             await eventUtils.setEventPassed(
                                 uuid=dict(mainItems)["event_item_uuid"],
                                 event_passed=True,
+                                uri=CONNECTION_URI,
                             )
                         elif eventParsedDate > today:
                             continue
