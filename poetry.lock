@@ -446,7 +446,7 @@ use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "rin-exceptions"
-version = "1.0.2"
+version = "1.0.3"
 description = "A set of base exceptions for Rin"
 category = "main"
 optional = false
@@ -558,7 +558,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b72bf6abffa5028601c94814a6d766fcb618a056598f3bc6d285ba6a94f90125"
+content-hash = "1dbe408fde38e17bbe368ac26677de4dc7586866073461d36f328d6ea80a2dee"
 
 [metadata.files]
 aiodns = [
@@ -1325,8 +1325,8 @@ requests = [
     {file = "requests-2.28.1.tar.gz", hash = "sha256:7c5599b102feddaa661c826c56ab4fee28bfd17f5abca1ebbe3e7f19d7c97983"},
 ]
 rin-exceptions = [
-    {file = "rin-exceptions-1.0.2.tar.gz", hash = "sha256:d46b0d19647e54a7d2454b0d5a8566d8cab0c1a974df12788dc7eaac280ee963"},
-    {file = "rin_exceptions-1.0.2-py3-none-any.whl", hash = "sha256:043b83c5456fc3bfde7d814d719cb1b869d35ec497fe042af81da6c076f28759"},
+    {file = "rin-exceptions-1.0.3.tar.gz", hash = "sha256:8044e89f50280b0d0e14639e0727405b49a0cf54a73b6993c2dd4cc56d0182c2"},
+    {file = "rin_exceptions-1.0.3-py3-none-any.whl", hash = "sha256:7d0e467a313d208589f1340c6225636ae2325e5b0a7be39e0361f1ab0d986fee"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
