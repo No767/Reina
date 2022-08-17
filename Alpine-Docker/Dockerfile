@@ -69,7 +69,7 @@ STOPSIGNAL SIGTERM
 
 # Image metadata
 LABEL org.opencontainers.image.title="Reina"
-LABEL org.opencontainers.image.description="A Discord Bot"
+LABEL org.opencontainers.image.description="A production-ready version of Beryl"
 LABEL org.opencontainers.image.url=""
-LABEL org.opencontainers.image.licenses=""
+LABEL org.opencontainers.image.licenses="Apache-2.0"
 LABEL org.opencontainers.image.source="https://github.com/No767/Reina"
