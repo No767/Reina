@@ -25,7 +25,6 @@ jobs:
           images: |
             no767/reina
           tags: |
-            type=raw,value=v2.2.0
             type=edge,branch=dev
           flavor: |
             latest=true
