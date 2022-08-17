@@ -25,6 +25,8 @@ class ReinaHelp(commands.Cog):
                 "DisQuest",
                 "Events",
                 "Fun-Stuff",
+                "Jisho",
+                "MangaDex",
                 "MyAnimeList",
                 "Tenor",
                 "Utility",
@@ -42,6 +44,8 @@ class ReinaHelp(commands.Cog):
             embed.add_field(name="DisQuest", value="`/help DisQuest`", inline=True)
             embed.add_field(name="Events", value="`/help Events`", inline=True)
             embed.add_field(name="Fun Stuff", value="`/help Fun-Stuff`", inline=True)
+            embed.add_field(name="Jisho", value="`/help Jisho`", inline=True)
+            embed.add_field(name="MangaDex", value="`/help MangaDex`", inline=True)
             embed.add_field(
                 name="MyAnimeList", value="`/help MyAnimeList`", inline=True
             )
@@ -189,6 +193,46 @@ class ReinaHelp(commands.Cog):
             )
             embedVar.set_author(
                 name="Help - Fun Stuff", icon_url=bot.user.display_avatar
+            )
+            await ctx.respond(embed=embedVar)
+
+        if category in ["Jisho"]:
+            bot = self.bot
+            embedVar = discord.Embed(color=14414079)
+            embedVar.add_field(
+                name="`jisho`",
+                value="Searches for any words and/or definitions on Jisho",
+                inline=True,
+            )
+            embedVar.set_author(name="Help - Jisho", icon_url=bot.user.display_avatar)
+            await ctx.respond(embed=embedVar)
+
+        if category in ["MangaDex"]:
+            bot = self.bot
+            embedVar = discord.Embed(color=14414079)
+            embedVar.description = "Base command: `mangadex`"
+            embedVar.add_field(
+                name="`search scanlation`",
+                value="Returns up to 5 scanlation groups via the name given",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`search manga`",
+                value="Searches for up to 5 manga on MangaDex",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`search author`",
+                value="Returns up to 5 authors and their info",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`random`",
+                value="Returns an random manga from MangaDex",
+                inline=True,
+            )
+            embedVar.set_author(
+                name="Help - MangaDex", icon_url=bot.user.display_avatar
             )
             await ctx.respond(embed=embedVar)
 
