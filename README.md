@@ -22,7 +22,8 @@ Currently implemented:
 
 - Custom XP system (DisQuest)
 - Events system
-- AniList, MAL, and Tenor Support
+- AniList, MAL, MangaDex, Jisho, and Tenor Support
+- Rewritten features of Beryl
 
 Considering implementing:
 
