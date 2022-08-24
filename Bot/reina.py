@@ -12,7 +12,7 @@ intents.message_content = True
 
 load_dotenv()
 
-Token = os.getenv("Reina_Token")
+REINA_TOKEN = os.getenv("Reina_Token")
 
 logging.basicConfig(
     level=logging.INFO,
@@ -39,4 +39,4 @@ async def on_ready():
     )
 
 
-client.run(Token)
+client.run(REINA_TOKEN)

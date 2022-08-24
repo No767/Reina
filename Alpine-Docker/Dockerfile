@@ -42,6 +42,7 @@ WORKDIR /Reina
 
 COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
+COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
 
 # Copy dependency wheels from builder stage
 COPY --from=builder /Reina/wheels /Reina/wheels

@@ -5,7 +5,7 @@
 ![Reina](./Assets/reina-logo-resized.png)
 
 
-[![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml) [![CodeQL](https://github.com/No767/Reina/actions/workflows/codeql.yml/badge.svg?branch=dev&event=push)](https://github.com/No767/Reina/actions/workflows/codeql.yml) [![Snyk](https://github.com/No767/Reina/actions/workflows/snyk.yml/badge.svg?branch=dev&event=push)](https://github.com/No767/Reina/actions/workflows/snyk.yml) [![Docker Build (GHCR)](https://github.com/No767/Reina/actions/workflows/docker-build-ghcr.yml/badge.svg?branch=dev)](https://github.com/No767/Reina/actions/workflows/docker-build-ghcr.yml)
+[![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml) [![CodeQL](https://github.com/No767/Reina/actions/workflows/codeql.yml/badge.svg?branch=dev&event=push)](https://github.com/No767/Reina/actions/workflows/codeql.yml) [![Snyk](https://github.com/No767/Reina/actions/workflows/snyk.yml/badge.svg?branch=dev&event=push)](https://github.com/No767/Reina/actions/workflows/snyk.yml) [![Docker Build (GHCR)](https://github.com/No767/Reina/actions/workflows/docker-build-ghcr.yml/badge.svg?branch=dev)](https://github.com/No767/Reina/actions/workflows/docker-build-ghcr.yml) [![Docker Build (Docker Hub)](https://github.com/No767/Reina/actions/workflows/docker-build-hub.yml/badge.svg)](https://github.com/No767/Reina/actions/workflows/docker-build-hub.yml)
 
 
 A production-ready fork of Beryl
@@ -23,11 +23,11 @@ Currently implemented:
 - Custom XP system (DisQuest)
 - Events system
 - AniList, MAL, MangaDex, Jisho, and Tenor Support
+- Kumiko's Genshin Wish Sim 
 - Rewritten features of Beryl
 
 Considering implementing:
 
-- Kumiko's Genshin Wish Sim 
 - Kumiko's Economy System
 
 ## Invite

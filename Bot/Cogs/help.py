@@ -25,6 +25,7 @@ class ReinaHelp(commands.Cog):
                 "DisQuest",
                 "Events",
                 "Fun-Stuff",
+                "Genshin-Wish-Sim",
                 "Jisho",
                 "MangaDex",
                 "MyAnimeList",
@@ -44,6 +45,11 @@ class ReinaHelp(commands.Cog):
             embed.add_field(name="DisQuest", value="`/help DisQuest`", inline=True)
             embed.add_field(name="Events", value="`/help Events`", inline=True)
             embed.add_field(name="Fun Stuff", value="`/help Fun-Stuff`", inline=True)
+            embed.add_field(
+                name="Genshin Wish Sim (GWS)",
+                value="`/help Genshin-Wish-Sim`",
+                inline=True,
+            )
             embed.add_field(name="Jisho", value="`/help Jisho`", inline=True)
             embed.add_field(name="MangaDex", value="`/help MangaDex`", inline=True)
             embed.add_field(
@@ -193,6 +199,45 @@ class ReinaHelp(commands.Cog):
             )
             embedVar.set_author(
                 name="Help - Fun Stuff", icon_url=bot.user.display_avatar
+            )
+            await ctx.respond(embed=embedVar)
+
+        if category in ["Genshin-Wish-Sim"]:
+            bot = self.bot
+            embedVar = discord.Embed(color=discord.Color.from_rgb(255, 196, 253))
+            embedVar.description = "Base command: `gws`"
+            embedVar.add_field(
+                name="`inv`",
+                value="Accesses your inventory for GWS",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`wish one`",
+                value="Allows you to wish for one item or character",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`profile`",
+                value="Gets your GWS profile",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`delete one`",
+                value="Deletes one item from your inventory",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`delete all`",
+                value="Deletes all items from your inventory",
+                inline=True,
+            )
+            embedVar.add_field(
+                name="`wish multiple`",
+                value="Allows you to wish for up to 3 items or characters at once",
+                inline=True,
+            )
+            embedVar.set_author(
+                name="Help - Genshin Wish Sim (GWS)", icon_url=bot.user.display_avatar
             )
             await ctx.respond(embed=embedVar)
 

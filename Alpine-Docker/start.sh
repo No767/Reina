@@ -57,6 +57,13 @@ else
     exit 1;
 fi
 
+if [[ -v POSTGRES_WS_DATABASE ]]; then
+    echo "Postgres_Wish_Sim_Database=${POSTGRES_WS_DATABASE}" >> /Reina/Bot/.env
+else
+    echo "Missing Postgres_Wish_Sim_Database env var! POSTGRES_WS_DATABASE environment variable is not set."
+    exit 1;
+fi
+
 if [[ -v POSTGRES_PORT ]]; then
     echo "Postgres_Port=${POSTGRES_PORT}" >> /Reina/Bot/.env
 else
