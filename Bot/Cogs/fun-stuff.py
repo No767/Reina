@@ -4,7 +4,7 @@ import random
 from hashlib import sha1
 
 import uvloop
-from discord.commands import Option, slash_command
+from discord.commands import Option, SlashCommandGroup, slash_command
 from discord.ext import commands
 
 logging.basicConfig(
@@ -17,6 +17,10 @@ logging.basicConfig(
 class fun_stuff(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    fun = SlashCommandGroup(
+        "fun", "Some fun commands to use", guild_ids=[1006845509857714277]
+    )
 
     @slash_command(name="ship", description="Calculates how much love a person has")
     async def shipPerson(

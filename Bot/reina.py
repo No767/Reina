@@ -12,7 +12,7 @@ intents.message_content = True
 
 load_dotenv()
 
-REINA_TOKEN = os.getenv("Reina_Token")
+REINA_TOKEN = os.getenv("Reina_Dev_Token")
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,7 +28,7 @@ path = Path(__file__).parents[0]
 cogsList = os.listdir(os.path.join(path, "Cogs"))
 for items in cogsList:
     if items.endswith(".py"):
-        client.load_extension(f"Cogs.{items[:-3]}")
+        client.load_extension(f"Cogs.{items[:-3]}", store=False)
 
 
 @client.event
