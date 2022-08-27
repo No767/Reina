@@ -8,6 +8,10 @@ else
     exit 1;
 fi
 
+if [[ -v REINA_DEV_TOKEN ]]; then
+    echo "Reina_Dev_Token=${REINA_DEV_TOKEN}" >> /Reina/Bot/.env
+fi
+
 # Hypixel API Keys
 if [[ -v HYPIXEL_API_KEY ]]; then
     echo "Hypixel_API_Key=${HYPIXEL_API_KEY}" >> /Reina/Bot/.env
@@ -44,7 +48,7 @@ else
 fi
 
 if [[ -v POSTGRES_DISQUEST_DATABASE ]]; then
-    echo "Postgres_Database=${POSTGRES_DISQUEST_DATABASE}" >> /Reina/Bot/.env
+    echo "Postgres_DisQuest_Database=${POSTGRES_DISQUEST_DATABASE}" >> /Reina/Bot/.env
 else
     echo "Missing Postgres_Disquest_Database env var! POSTGRES_DISQUEST_DATABASE environment variable is not set."
     exit 1;
@@ -61,6 +65,13 @@ if [[ -v POSTGRES_WS_DATABASE ]]; then
     echo "Postgres_Wish_Sim_Database=${POSTGRES_WS_DATABASE}" >> /Reina/Bot/.env
 else
     echo "Missing Postgres_Wish_Sim_Database env var! POSTGRES_WS_DATABASE environment variable is not set."
+    exit 1;
+fi
+
+if [[ -v POSTGRES_HELP_DATABASE ]]; then
+    echo "Postgres_Help_Database=${POSTGRES_HELP_DATABASE}" >> /Reina/Bot/.env
+else
+    echo "Missing Postgres_Help_Database env var! POSTGRES_HELP_DATABASE environment variable is not set."
     exit 1;
 fi
 

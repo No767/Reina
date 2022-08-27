@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: ws_data; Type: TABLE; Schema: public; Owner: Kumiko
+-- Name: ws_data; Type: TABLE; Schema: public; Owner: Reina
 --
 
 CREATE TABLE public.ws_data (

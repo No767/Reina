@@ -43,6 +43,7 @@ WORKDIR /Reina
 COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
+COPY /Bot/help_utils/ /Reina/Bot/help_utils
 
 # Copy dependency wheels from builder stage
 COPY --from=builder /Reina/wheels /Reina/wheels
@@ -71,6 +72,6 @@ STOPSIGNAL SIGTERM
 # Image metadata
 LABEL org.opencontainers.image.title="Reina"
 LABEL org.opencontainers.image.description="A production-ready version of Beryl"
-LABEL org.opencontainers.image.url=""
+LABEL org.opencontainers.image.url="https://github.com/No767/Reina"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 LABEL org.opencontainers.image.source="https://github.com/No767/Reina"
