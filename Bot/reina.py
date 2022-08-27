@@ -35,7 +35,9 @@ for items in cogsList:
 async def on_ready():
     logging.info("Reina is ready!")
     await client.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching, name="/help")
+        activity=discord.Activity(
+            type=discord.ActivityType.watching, name="/reina help"
+        )
     )
 
 

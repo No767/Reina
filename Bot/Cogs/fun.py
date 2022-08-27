@@ -4,8 +4,9 @@ import random
 from hashlib import sha1
 
 import uvloop
-from discord.commands import Option, SlashCommandGroup, slash_command
+from discord.commands import Option, SlashCommandGroup
 from discord.ext import commands
+from numpy.random import default_rng
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,14 +22,18 @@ class fun_stuff(commands.Cog):
     fun = SlashCommandGroup(
         "fun", "Some fun commands to use", guild_ids=[1006845509857714277]
     )
+    funRandom = fun.create_subgroup(
+        "random", "Random commands", guild_ids=[1006845509857714277]
+    )
 
-    @slash_command(name="ship", description="Calculates how much love a person has")
+    @fun.command(name="ship")
     async def shipPerson(
         self,
         ctx,
         person_a: Option(str, "The person who you would want to ship with"),
         person_b: Option(str, "The person you would want to ship with"),
     ):
+        """Calculates how much love a person has"""
         a = person_a + person_b
         hashstr = sha1(bytes(a, "utf-8")).hexdigest()
         percentage = round(int(hashstr, 16) / 2**160 * 100, 2)
@@ -46,10 +51,11 @@ class fun_stuff(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @slash_command(name="sex", description="it's a sex calculator")
+    @fun.command(name="sex")
     async def havingSex(
         self, ctx, person: Option(str, "The person who would want to be submissive")
     ):
+        """it's a sex calculator"""
         sexsuccessresponses = [
             "You have successfully fucked {}! You were very submissive and breedable",
             "Ou la la! You successfully sexed {}! You were so breedable you bore their twins!",
@@ -64,17 +70,18 @@ class fun_stuff(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @slash_command(name="say", description="Says something")
+    @fun.command(name="say")
     async def sayTheWord(self, ctx, things: Option(str, "The word or phrase to say")):
-        logging.info(f"{ctx.author.name} used say with arg {things}")
+        """Says something"""
         await ctx.respond(things.replace("@", ""))
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @slash_command(name="laugh", description="Laughs")
+    @fun.command(name="laugh")
     async def laughingAtSomeone(
         self, ctx, length: Option(int, "The length of the laugh")
     ):
+        """Laughs"""
         laughter = "".join(
             [random.choice("ASDFGHJKL") for _ in range(min(length, 2001))]
         )
@@ -82,13 +89,29 @@ class fun_stuff(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @slash_command(
-        name="random_int", description="Based on 2 limits, returns a random number"
-    )
-    async def randint(self, ctx, floor, ceil):
+    @funRandom.command(name="int")
+    async def randint(
+        self,
+        ctx,
+        floor: Option(int, "The base limit"),
+        ceil: Option(int, "The upper limit"),
+    ):
+        """Based on 2 limits, returns a random number"""
         await ctx.respond(random.randint(int(floor), int(ceil)))
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+    @funRandom.command(name="dice")
+    async def randomDice(
+        self,
+        ctx,
+        *,
+        num_of_sides: Option(int, "The number of sides that the dice has", default=6),
+    ):
+        """Randomly rolls the dice"""
+        rng = default_rng()
+        res = rng.integers(low=1, high=num_of_sides)
+        await ctx.respond(f"It seems like you rolled a {res}!")
 
 
 def setup(bot):

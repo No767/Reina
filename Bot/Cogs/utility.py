@@ -1,5 +1,4 @@
 import asyncio
-import datetime
 import os
 import time
 
@@ -52,15 +51,6 @@ class Utils(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @utils.command(name="ping")
-    async def pingChecker(self, ctx):
-        """Returns Reina's Ping"""
-        embed = discord.Embed()
-        embed.description = f"Bot Latency: {round(self.bot.latency * 1000)}ms"
-        await ctx.respond(embed=embed)
-
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
     @utils.command(name="hypixel-count")
     async def player_count(self, ctx):
         """Gets the amount of players in each game server"""
@@ -84,25 +74,6 @@ class Utils(commands.Cog):
                     embedVar.description = "The command broke. Please try again."
                     embedVar.add_field(name="Reason", value=str(e), inline=False)
                     await ctx.respond(embed=embedVar)
-
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
-    @utils.command(name="uptime")
-    async def botUptime(self, ctx):
-        """Returns Reina's Uptime"""
-        uptime = datetime.timedelta(seconds=int(round(time.time() - startTime)))
-        embed = discord.Embed(color=discord.Color.from_rgb(245, 227, 255))
-        embed.description = f"Reina's Uptime: `{uptime.days} Days, {uptime.seconds//3600} Hours, {(uptime.seconds//60)%60} Minutes, {(uptime.seconds%60)} Seconds`"
-        await ctx.respond(embed=embed)
-
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
-    @utils.command(name="version")
-    async def version(self, ctx):
-        """Returns Reina's Current Version"""
-        embedVar = discord.Embed()
-        embedVar.description = "Build Version: v2.3.0"
-        await ctx.respond(embed=embedVar)
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 

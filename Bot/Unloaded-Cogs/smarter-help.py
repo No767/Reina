@@ -1,5 +1,6 @@
 import asyncio
 import os
+import uuid
 
 import discord
 import uvloop
@@ -30,28 +31,31 @@ class SmarterHelp(commands.Cog):
         guild_ids=[1006845509857714277],
     )
     async def smarterHelp(self, ctx: discord.ApplicationContext):
-        # for items in self.bot.walk_application_commands():
-        #     await helpUtils.addToHelpDB(
-        #         uuid=str(uuid.uuid4()),
-        #         name=items.qualified_name,
-        #         parent_name=str(items.parent) if str(items.parent) is not None else "None",
-        #         description=items.description,
-        #         module=items.module,
-        #         uri=HELP_CONNECTION_URI
-        #     )
-        mainPages = pages.Paginator(
-            pages=[
-                discord.Embed(description=f"[{str(items.parent)}]")
-                for items in self.bot.walk_application_commands()
-            ],
-            loop_pages=True,
-        )
+        for items in self.bot.walk_application_commands():
+            await helpUtils.addToHelpDB(
+                uuid=str(uuid.uuid4()),
+                name=items.qualified_name,
+                parent_name=str(items.parent)
+                if str(items.parent) is not None
+                else "None",
+                description=items.description,
+                module=str(items.module).replace("Cogs.", ""),
+                uri=HELP_CONNECTION_URI,
+            )
+        # mainPages = pages.Paginator(
+        #     pages=[
+        #         discord.Embed(description=f"[{str(items.parent)}]")
+        #         for items in self.bot.walk_application_commands()
+        #     ],
+        #     loop_pages=True,
+        # )
         # mainPages = pages.Paginator(pages=[
-        # discord.Embed(description=str(items.module))
+        # discord.Embed(description=str(items.qualified_name))
         # for items in self.bot.walk_application_commands()
         # ], loop_pages=True)
-        # await ctx.defer()
-        await mainPages.respond(ctx.interaction, ephemeral=False)
+        await ctx.defer()
+        await ctx.respond("help me")
+        # await mainPages.respond(ctx.interaction, ephemeral=False)
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
@@ -68,28 +72,55 @@ class SmarterHelp(commands.Cog):
             str,
             "The filters to choose from",
             choices=[
+                "All",
                 "AniList",
                 "DisQuest",
                 "Events",
-                "Fun-Stuff",
+                "Fun",
                 "GWS",
                 "Jisho",
                 "MangaDex",
                 "MyAnimeList",
+                "Reina",
                 "Tenor",
-                "Useful-Things",
+                "Utility",
                 "Waifu",
             ],
             required=False,
         ),
     ):
         if filters is None:
-            await ctx.respond("sections")
+            embedMain = discord.Embed(color=discord.Color.from_rgb(255, 201, 255))
+            embedMain.set_author(
+                name=f"Help", icon_url=self.bot.user.display_avatar.url
+            )
+            embedMain.description = "Welcome! Reina is a fork of Beryl, which focuses on improving features of Beryl, and adding new ones as well. To check out the commands, check out the filters option for a section by section breakdown of the commands."
+            await ctx.respond(embed=embedMain)
+        elif filters in ["All"]:
+            getAllCmds = await helpUtils.getAllCommands(uri=HELP_CONNECTION_URI)
+            mainPages = pages.Paginator(
+                pages=[
+                    discord.Embed(
+                        title=dict(mainItems)["name"],
+                        description=dict(mainItems)["description"],
+                    )
+                    .add_field(
+                        name="Parent Name",
+                        value=dict(mainItems)["parent_name"],
+                        inline=True,
+                    )
+                    .add_field(
+                        name="Module", value=dict(mainItems)["module"], inline=True
+                    )
+                    for mainItems in getAllCmds
+                ],
+                loop_pages=True,
+            )
+            await mainPages.respond(ctx.interaction, ephemeral=False)
         else:
             moduleType = str(filters).lower().strip()
-            fullModule = f"Cogs.{moduleType}"
             mainRes = await helpUtils.getCmdsFromModule(
-                module=fullModule, uri=HELP_CONNECTION_URI
+                module=moduleType, uri=HELP_CONNECTION_URI
             )
             embed = discord.Embed(color=discord.Color.from_rgb(255, 201, 255))
             embed.set_author(

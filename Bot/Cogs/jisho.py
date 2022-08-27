@@ -5,7 +5,7 @@ import discord
 import orjson
 import simdjson
 import uvloop
-from discord.commands import Option, slash_command
+from discord.commands import Option, SlashCommandGroup
 from discord.ext import commands, pages
 
 parser = simdjson.Parser()
@@ -15,10 +15,11 @@ class jishoDict(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(
-        name="jisho",
-        description="Searches for words on Jisho",
+    jisho = SlashCommandGroup(
+        "jisho", "Commands for Jisho", guild_ids=[1006845509857714277]
     )
+
+    @jisho.command(name="search")
     async def jishoSearcher(
         self,
         ctx,
@@ -27,6 +28,7 @@ class jishoDict(commands.Cog):
             "The word you want to search for. It could be in either English or Japanese.",
         ),
     ):
+        """Searches for words on Jisho"""
         async with aiohttp.ClientSession(json_serialize=orjson.dumps) as session:
             params = {"keyword": search}
             async with session.get(

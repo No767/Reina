@@ -64,7 +64,7 @@ class EventTaskProcess:
                             continue
             except NoItemsError:
                 logging.warn(
-                    "No events found within the database. Continuing to check for more"
+                    "No events found, or all events have already passed. Continuing to check for more"
                 )
                 continue
 

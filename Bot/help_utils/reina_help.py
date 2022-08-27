@@ -85,3 +85,26 @@ class ReinaHelpUtils:
                 return np.array([row for row in res.scalars()])
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+    async def getAllCommands(self, uri: str) -> np.array:
+        """Gets literally every single command in the DB
+
+        Args:
+            uri (str): Connection URI
+
+        Returns:
+            np.array: An `np.array` full of `models.HelpData` objects
+        """
+        engine = create_async_engine(uri)
+        asyncSession = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+        async with asyncSession() as session:
+            async with session.begin():
+                selItem = (
+                    select(models.HelpData)
+                    .order_by(models.HelpData.name.asc())
+                    .filter(models.HelpData.module != "discord.commands.core")
+                )
+                res = await session.execute(selItem)
+                return np.array([row for row in res.scalars()])
+
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
