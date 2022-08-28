@@ -15,7 +15,7 @@ load_dotenv()
 PASSWORD = os.getenv("Postgres_Password")
 IP = os.getenv("Postgres_IP")
 USER = os.getenv("Postgres_User")
-DATABASE = os.getenv("Postgres_Database")
+DATABASE = os.getenv("Postgres_DisQuest_Database")
 PORT = os.getenv("Postgres_Port")
 CONNECTION_URI = f"postgresql+asyncpg://{USER}:{PASSWORD}@{IP}:{PORT}/{DATABASE}"
 

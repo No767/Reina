@@ -10,6 +10,14 @@ python-versions = "*"
 pycares = ">=4.0.0"
 
 [[package]]
+name = "aiofiles"
+version = "0.6.0"
+description = "File support for asyncio."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "aiohttp"
 version = "3.8.1"
 description = "Async http client/server framework (asyncio)"
@@ -41,12 +49,46 @@ python-versions = ">=3.6"
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "aiosqlite"
+version = "0.17.0"
+description = "asyncio bridge to the standard sqlite3 module"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+typing_extensions = ">=3.7.2"
+
+[[package]]
+name = "async-generator"
+version = "1.10"
+description = "Async generators and context managers for Python 3.5+"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "async-timeout"
 version = "4.0.2"
 description = "Timeout context manager for asyncio programs"
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "asyncio-extras"
+version = "1.3.2"
+description = "Asynchronous generators, context managers and more for asyncio"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+async-generator = ">=1.3"
+
+[package.extras]
+doc = ["sphinx-autodoc-typehints"]
+test = ["pytest", "pytest-asyncio", "pytest-cov"]
 
 [[package]]
 name = "asyncpg"
@@ -60,6 +102,46 @@ python-versions = ">=3.6.0"
 dev = ["Cython (>=0.29.24,<0.30.0)", "pytest (>=6.0)", "Sphinx (>=4.1.2,<4.2.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)", "pycodestyle (>=2.7.0,<2.8.0)", "flake8 (>=3.9.2,<3.10.0)", "uvloop (>=0.15.3)"]
 docs = ["Sphinx (>=4.1.2,<4.2.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)"]
 test = ["pycodestyle (>=2.7.0,<2.8.0)", "flake8 (>=3.9.2,<3.10.0)", "uvloop (>=0.15.3)"]
+
+[[package]]
+name = "asyncpraw"
+version = "7.5.0"
+description = "Async PRAW, an abbreviation for `Asynchronous Python Reddit API Wrapper`, is a python package that allows for simple access to reddit's API."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+aiofiles = "<=0.6.0"
+aiosqlite = "<=0.17.0"
+asyncio-extras = "<=1.3.2"
+asyncprawcore = ">=2.1,<3"
+update-checker = ">=0.18"
+
+[package.extras]
+ci = ["coveralls"]
+dev = ["packaging", "pre-commit", "sphinx", "sphinx-rtd-theme", "sphinxcontrib-trio", "asynctest (>=0.13.0)", "mock (>=0.8)", "pytest (>=2.7.3)", "pytest-asyncio", "pytest-vcr", "testfixtures (>4.13.2,<7)", "vcrpy (==4.1.1)"]
+lint = ["pre-commit", "sphinx", "sphinx-rtd-theme", "sphinxcontrib-trio"]
+readthedocs = ["sphinx", "sphinx-rtd-theme", "sphinxcontrib-trio"]
+test = ["asynctest (>=0.13.0)", "mock (>=0.8)", "pytest (>=2.7.3)", "pytest-asyncio", "pytest-vcr", "testfixtures (>4.13.2,<7)", "vcrpy (==4.1.1)"]
+
+[[package]]
+name = "asyncprawcore"
+version = "2.3.0"
+description = "Low-level asynchronous communication layer for Async PRAW 7+."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+aiohttp = "*"
+yarl = "*"
+
+[package.extras]
+ci = ["coveralls"]
+dev = ["black", "flake8", "flynt", "pre-commit", "pydocstyle", "asynctest (>=0.13.0)", "mock (>=0.8)", "pytest", "pytest-vcr", "testfixtures (>4.13.2,<7)", "vcrpy (==4.0.2)"]
+lint = ["black", "flake8", "flynt", "pre-commit", "pydocstyle"]
+test = ["asynctest (>=0.13.0)", "mock (>=0.8)", "pytest", "pytest-vcr", "testfixtures (>4.13.2,<7)", "vcrpy (==4.0.2)"]
 
 [[package]]
 name = "attrs"
@@ -141,7 +223,7 @@ python-versions = ">=3.6.1"
 
 [[package]]
 name = "charset-normalizer"
-version = "2.1.0"
+version = "2.1.1"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 category = "main"
 optional = false
@@ -295,6 +377,14 @@ optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*"
 
 [[package]]
+name = "numpy"
+version = "1.23.2"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "orjson"
 version = "3.7.12"
 description = "Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy"
@@ -332,7 +422,7 @@ virtualenv = ">=20.0.8"
 
 [[package]]
 name = "py-cord"
-version = "2.0.1"
+version = "2.1.1"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
@@ -368,6 +458,17 @@ description = "C parser in Python"
 category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "pyinstrument"
+version = "4.3.0"
+description = "Call stack profiler for Python. Shows you why your code is slow!"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+jupyter = ["ipython"]
 
 [[package]]
 name = "pynacl"
@@ -501,8 +602,32 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "typing-extensions"
+version = "4.3.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "update-checker"
+version = "0.18.0"
+description = "A python module that will check for package updates."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = ">=2.3.0"
+
+[package.extras]
+dev = ["black", "flake8", "pytest (>=2.7.3)"]
+lint = ["black", "flake8"]
+test = ["pytest (>=2.7.3)"]
+
+[[package]]
 name = "urllib3"
-version = "1.26.11"
+version = "1.26.12"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
@@ -510,7 +635,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, 
 
 [package.extras]
 brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
@@ -558,12 +683,16 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b72bf6abffa5028601c94814a6d766fcb618a056598f3bc6d285ba6a94f90125"
+content-hash = "e4c086b0254bc33523d57c7b5c46dde7c212cba4e7c6a2c49020ab61700eeced"
 
 [metadata.files]
 aiodns = [
     {file = "aiodns-3.0.0-py3-none-any.whl", hash = "sha256:2b19bc5f97e5c936638d28e665923c093d8af2bf3aa88d35c43417fa25d136a2"},
     {file = "aiodns-3.0.0.tar.gz", hash = "sha256:946bdfabe743fceeeb093c8a010f5d1645f708a241be849e17edfb0e49e08cd6"},
+]
+aiofiles = [
+    {file = "aiofiles-0.6.0-py3-none-any.whl", hash = "sha256:bd3019af67f83b739f8e4053c6c0512a7f545b9a8d91aaeab55e6e0f9d123c27"},
+    {file = "aiofiles-0.6.0.tar.gz", hash = "sha256:e0281b157d3d5d59d803e3f4557dcc9a3dff28a4dd4829a9ff478adae50ca092"},
 ]
 aiohttp = [
     {file = "aiohttp-3.8.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:1ed0b6477896559f17b9eaeb6d38e07f7f9ffe40b9f0f9627ae8b9926ae260a8"},
@@ -643,11 +772,31 @@ aiosignal = [
     {file = "aiosignal-1.2.0-py3-none-any.whl", hash = "sha256:26e62109036cd181df6e6ad646f91f0dcfd05fe16d0cb924138ff2ab75d64e3a"},
     {file = "aiosignal-1.2.0.tar.gz", hash = "sha256:78ed67db6c7b7ced4f98e495e572106d5c432a93e1ddd1bf475e1dc05f5b7df2"},
 ]
+aiosqlite = [
+    {file = "aiosqlite-0.17.0-py3-none-any.whl", hash = "sha256:6c49dc6d3405929b1d08eeccc72306d3677503cc5e5e43771efc1e00232e8231"},
+    {file = "aiosqlite-0.17.0.tar.gz", hash = "sha256:f0e6acc24bc4864149267ac82fb46dfb3be4455f99fe21df82609cc6e6baee51"},
+]
+async-generator = [
+    {file = "async_generator-1.10-py3-none-any.whl", hash = "sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b"},
+    {file = "async_generator-1.10.tar.gz", hash = "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"},
+]
 async-timeout = [
     {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
 ]
+asyncio-extras = [
+    {file = "asyncio_extras-1.3.2-py3-none-any.whl", hash = "sha256:839568ba07c3470c9aa2c441aa2417c108f7d3755862bc2bd39d69b524303993"},
+    {file = "asyncio_extras-1.3.2.tar.gz", hash = "sha256:084b62bebc19c6ba106d438a274bbb5566941c469128cd4af1a85f00a2c81f8d"},
+]
 asyncpg = []
+asyncpraw = [
+    {file = "asyncpraw-7.5.0-py3-none-any.whl", hash = "sha256:b40f3db3464077a7a7e30a89181ba15ba4c5bc550dc2642e815b235f42ad8eb2"},
+    {file = "asyncpraw-7.5.0.tar.gz", hash = "sha256:61aabf05052472d8b29e0f0500a6ec8b483129374d36dad286d94e4b6864572d"},
+]
+asyncprawcore = [
+    {file = "asyncprawcore-2.3.0-py3-none-any.whl", hash = "sha256:46c52e6cfe91801a8c9490a0ee29a85cbc6713ccc535d5c704d448aee9729e5b"},
+    {file = "asyncprawcore-2.3.0.tar.gz", hash = "sha256:2a4a2d1ca7f78c8fa7d4903e6bd18cfe96742ad1f167b59473f64be0e7060d5d"},
+]
 attrs = []
 backoff = []
 beryl-events-utils = []
@@ -899,6 +1048,7 @@ nodeenv = [
     {file = "nodeenv-1.7.0-py2.py3-none-any.whl", hash = "sha256:27083a7b96a25f2f5e1d8cb4b6317ee8aeda3bdd121394e5ac54e498028a042e"},
     {file = "nodeenv-1.7.0.tar.gz", hash = "sha256:e0e7f7dfb85fc5394c6fe1e8fa98131a2473e04311a45afb6508f7cf1836fa2b"},
 ]
+numpy = []
 orjson = []
 platformdirs = [
     {file = "platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
@@ -911,6 +1061,7 @@ pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
 ]
+pyinstrument = []
 pynacl = [
     {file = "PyNaCl-1.5.0-cp36-abi3-macosx_10_10_universal2.whl", hash = "sha256:401002a4aaa07c9414132aaed7f6836ff98f59277a234704ff66878c2ee4a0d1"},
     {file = "PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_24_aarch64.whl", hash = "sha256:52cb72a79269189d4e0dc537556f4740f7f0a9ec41c1322598799b0bdad4ef92"},
@@ -1052,6 +1203,14 @@ sqlalchemy = []
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+typing-extensions = [
+    {file = "typing_extensions-4.3.0-py3-none-any.whl", hash = "sha256:25642c956049920a5aa49edcdd6ab1e06d7e5d467fc00e0506c44ac86fbfca02"},
+    {file = "typing_extensions-4.3.0.tar.gz", hash = "sha256:e6d2677a32f47fc7eb2795db1dd15c1f34eff616bcaf2cfb5e997f854fa1c4a6"},
+]
+update-checker = [
+    {file = "update_checker-0.18.0-py3-none-any.whl", hash = "sha256:cbba64760a36fe2640d80d85306e8fe82b6816659190993b7bdabadee4d4bbfd"},
+    {file = "update_checker-0.18.0.tar.gz", hash = "sha256:6a2d45bb4ac585884a6b03f9eade9161cedd9e8111545141e9aa9058932acb13"},
 ]
 urllib3 = []
 uvloop = [
