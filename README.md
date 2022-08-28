@@ -22,7 +22,7 @@ Currently implemented:
 
 - Custom XP system (DisQuest)
 - Events system
-- AniList, MAL, MangaDex, Jisho, and Tenor Support
+- AniList, MAL, MangaDex, Jisho, Reddit, and Tenor Support
 - Kumiko's Genshin Wish Sim 
 - Rewritten features of Beryl
 

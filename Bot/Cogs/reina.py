@@ -86,6 +86,7 @@ class ReinaUtils(commands.Cog):
                 "Jisho",
                 "MangaDex",
                 "MyAnimeList",
+                "Reddit",
                 "Reina",
                 "Tenor",
                 "Utility",
