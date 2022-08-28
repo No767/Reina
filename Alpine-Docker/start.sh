@@ -25,6 +25,17 @@ else
     echo "Missing Tenor API key! TENOR_API_KEY environment variable is not set."
 fi 
 
+if [[ -v REDDIT_ID ]]; then
+    echo "Reddit_ID=${REDDIT_ID}" >> /Reina/Bot/.env
+else
+    echo "Missing Reddit ID! REDDIT_ID environment variable is not set."
+fi 
+# Reddit Secret
+if [[ -v REDDIT_SECRET ]]; then
+    echo "Reddit_Secret=${REDDIT_SECRET}" >> /Reina/Bot/.env
+else
+    echo "Missing Reddit secret! REDDIT_SECRET environment variable is not set."
+fi
 
 if [[ -v POSTGRES_PASSWORD ]]; then
     echo "Postgres_Password=${POSTGRES_PASSWORD}" >> /Reina/Bot/.env

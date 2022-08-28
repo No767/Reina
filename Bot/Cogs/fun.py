@@ -19,12 +19,8 @@ class fun_stuff(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    fun = SlashCommandGroup(
-        "fun", "Some fun commands to use", guild_ids=[1006845509857714277]
-    )
-    funRandom = fun.create_subgroup(
-        "random", "Random commands", guild_ids=[1006845509857714277]
-    )
+    fun = SlashCommandGroup("fun", "Some fun commands to use")
+    funRandom = fun.create_subgroup("random", "Random commands")
 
     @fun.command(name="ship")
     async def shipPerson(

@@ -24,9 +24,7 @@ class Utils(commands.Cog):
         global startTime
         startTime = time.time()
 
-    utils = SlashCommandGroup(
-        "utils", "Util Commands for Reina", guild_ids=[1006845509857714277]
-    )
+    utils = SlashCommandGroup("utils", "Util Commands for Reina")
 
     @utils.command(name="ffmpegcve")
     async def ffmpegcve(

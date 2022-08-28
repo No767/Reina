@@ -36,9 +36,7 @@ class ReinaUtils(commands.Cog):
         global startTime
         startTime = time.time()
 
-    reina = SlashCommandGroup(
-        "reina", "Utility Commands for Reina", guild_ids=[1006845509857714277]
-    )
+    reina = SlashCommandGroup("reina", "Utility Commands for Reina")
 
     @reina.command(name="uptime")
     async def botUptime(self, ctx):
