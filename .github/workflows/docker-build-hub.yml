@@ -5,7 +5,6 @@ on:
     paths-ignore:
       - "**.md"
     branches:
-      - master
       - dev
     tags:
       - 'v*'
@@ -25,6 +24,7 @@ jobs:
           images: |
             no767/reina
           tags: |
+            type=semver,pattern={{raw}}
             type=edge,branch=dev
           flavor: |
             latest=true
