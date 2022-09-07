@@ -6,7 +6,7 @@ authors = ["No767 <73260931+No767@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-py-cord = {version = "2.1.1", extras = ["voice"]}
+py-cord = {version = "2.1.3", extras = ["voice"]}
 aiodns = "^3.0.0"
 cchardet = "^2.1.7"
 python-dotenv = "^0.21.0"
