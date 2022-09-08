@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  Build:
+  Build-Alpine:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,8 +24,11 @@ jobs:
           images: |
             no767/reina
           tags: |
-            type=semver,pattern={{raw}}
-            type=edge,branch=dev
+            type=semver,pattern={{raw}},suffix=-alpine
+            type=semver,pattern={{version}},suffix=-alpine
+            type=semver,pattern={{major}}.{{minor}},suffix=-alpine
+            type=semver,pattern={{major}},suffix=-alpine
+            type=edge,branch=dev,suffix=-alpine
 
       - name: Setup Docker Buildx
         id: buildx
@@ -61,3 +64,62 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+  Build-Debian:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+    
+      - name: Prepare Docker Meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            no767/reina
+          tags: |
+            type=semver,pattern={{raw}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{raw}},suffix=-bullseye
+            type=semver,pattern={{version}},suffix=-bullseye
+            type=semver,pattern={{major}}.{{minor}},suffix=-bullseye
+            type=semver,pattern={{major}},suffix=-bullseye
+            type=edge,branch=dev,suffix=-bullseye
+            type=edge,branch=dev
+
+      - name: Setup Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          version: latest
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-v2-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-v2-
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Debian-Docker/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new-v2
+
+      - name: Move Cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new-v2 /tmp/.buildx-cache
