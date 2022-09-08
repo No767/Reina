@@ -21,9 +21,7 @@ jobs:
           images: |
             ghcr.io/no767/reina
           tags: |
-            type=edge,branch=dev,suffix=-{{sha}}
-          flavor: |
-            latest=true
+            type=edge,branch=dev
 
       - name: Setup Docker Buildx
         id: buildx
@@ -35,7 +33,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Docker layers

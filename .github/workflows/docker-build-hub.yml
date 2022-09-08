@@ -26,8 +26,6 @@ jobs:
           tags: |
             type=semver,pattern={{raw}}
             type=edge,branch=dev
-          flavor: |
-            latest=true
 
       - name: Setup Docker Buildx
         id: buildx
