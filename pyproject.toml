@@ -21,7 +21,7 @@ beryl-events-utils = "^2.0.1"
 rin-exceptions = "^1.0.2"
 Brotli = "^1.0.9"
 gql = {extras = ["aiohttp"], version = "^3.4.0"}
-numpy = "^1.23.2"
+numpy = "^1.23.3"
 asyncpraw = "^7.5.0"
 
 [tool.poetry.dev-dependencies]
