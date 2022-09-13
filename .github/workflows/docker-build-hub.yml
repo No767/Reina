@@ -29,6 +29,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}},suffix=-alpine
             type=semver,pattern={{major}},suffix=-alpine
             type=edge,branch=dev,suffix=-alpine
+          flavor: |
+            latest=false
 
       - name: Setup Docker Buildx
         id: buildx
