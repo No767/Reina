@@ -3,7 +3,7 @@ services:
   reina:
     container_name: Reina
     restart: always
-    image: no767/reina:edge-alpine
+    image: no767/reina:latest
     env_file:
       - .env-example # Re-name this to .env
     deploy:
