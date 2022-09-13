@@ -15,9 +15,7 @@ class jishoDict(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    jisho = SlashCommandGroup(
-        "jisho", "Commands for Jisho", guild_ids=[1006845509857714277]
-    )
+    jisho = SlashCommandGroup("jisho", "Commands for Jisho")
 
     @jisho.command(name="search")
     async def jishoSearcher(
