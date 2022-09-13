@@ -9,6 +9,7 @@ Fixes some bugs in regards with globally rolling out slash commands, and update 
 - Use `github.actor` instead of `github.repository_owner` for Docker Build GHCR workflows
 - Include Docker ENV examples
 - Condense Docker Build workflows
+- Don't make Alpine builds the latest for prod deployments
 
 ## ✨ Additions
 
