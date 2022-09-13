@@ -15,3 +15,4 @@ docker-compose.yml
 file-test.py
 run.sh
 test-scripts
+.env-prod

@@ -2,18 +2,10 @@ version: "3.9"
 services:
   reina:
     container_name: Reina
-    build:
-      context: .
-      dockerfile: ./Alpine-Docker/Dockerfile
-    environment:
-      - REINA_TOKEN=token
-      - HYPIXEL_API_KEY=key
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_IP=ip
-      - POSTGRES_USER=user
-      - POSTGRES_DISQUEST_DATABASE=db
-      - POSTGRES_EVENTS_DATABASE=db
-      - POSTGRES_PORT=5432
+    restart: always
+    image: no767/reina:latest
+    env_file:
+      - .env-example # Re-name this to .env
     deploy:
       restart_policy:
         condition: on-failure
@@ -21,18 +13,20 @@ services:
         max_attempts: 3
         window: 120s
       mode: replicated
+    depends_on:
+      - postgres
 
   postgres:
     container_name: Reina-Postgres
-    image: postgres:latest
+    image: postgres:14.5 # Use the Alpine version if you are running low on storage
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=Reina
       - POSTGRES_DB=Reina
     volumes:
-      - reina_postgres_volume:/var/lib/postgresql/data
+      - prod_postgres_volume:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
 volumes:
-  reina_postgres_volume:
+  prod_postgres_volume:

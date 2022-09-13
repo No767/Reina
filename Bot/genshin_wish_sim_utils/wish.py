@@ -216,10 +216,17 @@ class ReinaWSUtils:
         rng = default_rng()
         randomChance = rng.random()
 
+        # Same concept as in Java...
+        returnedValue = 3
+
         # Pull rates used here: https://game8.co/games/Genshin-Impact/archives/297443
         if randomChance <= 0.06:
-            return 5
+            returnedValue = 5
         elif randomChance <= 0.051:
-            return 4
+            returnedValue = 4
         elif randomChance <= 94.3:
-            return 3
+            returnedValue = 3
+
+        return returnedValue
+
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())

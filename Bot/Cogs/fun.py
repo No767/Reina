@@ -109,6 +109,8 @@ class fun_stuff(commands.Cog):
         res = rng.integers(low=1, high=num_of_sides)
         await ctx.respond(f"It seems like you rolled a {res}!")
 
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
 
 def setup(bot):
     bot.add_cog(fun_stuff(bot))

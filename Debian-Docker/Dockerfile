@@ -1,19 +1,18 @@
 ####################################################################################################
 ## Builder image
 ####################################################################################################
-# Credits to Ellie (@TheSilkky) for the original system + Dockerfile
-# Modifed for use with Poetry
-FROM python:3.10.7-alpine3.16 AS builder
+FROM python:3.10.7-slim-bullseye AS builder
 
-RUN apk add --no-cache \
+ENV DEBIAN_FRONTEND=noninteractive 
+
+RUN apt update \
+    && apt install -y --no-install-recommends \
+    build-essential \
     ca-certificates \
-    build-base \
-    curl \
-    linux-headers
+    curl
 
-# Add Poetry locally
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 RUN python -m pip install --upgrade pip setuptools
 RUN curl -sSL https://install.python-poetry.org | python -
 ENV PATH="${PATH}:/root/.local/bin"
@@ -23,19 +22,18 @@ WORKDIR /Reina
 COPY /pyproject.toml /Reina/
 COPY /poetry.lock /Reina/
 
-
-# Create dependency wheels
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes \
     && pip wheel --wheel-dir=/Reina/wheels -r requirements.txt
 
 ####################################################################################################
 ## Final image
 ####################################################################################################
-FROM python:3.10.7-alpine3.16
+FROM python:3.10.7-slim-bullseye
 
-RUN apk add --no-cache \
-    ca-certificates \
+RUN apt update \
+    && apt install -y --no-install-recommends \
     tini \
+    ca-certificates \
     bash
 
 WORKDIR /Reina
@@ -44,32 +42,27 @@ COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
 COPY /Bot/help_utils/ /Reina/Bot/help_utils
+COPY /Debian-Docker/start.sh /Reina/start.sh
 
-# Copy dependency wheels from builder stage
 COPY --from=builder /Reina/wheels /Reina/wheels
 COPY --from=builder /Reina/requirements.txt /Reina/requirements.txt
 
-COPY /Alpine-Docker/start.sh /Reina/start.sh
+RUN pip install --upgrade pip setuptools
 
-RUN pip install --upgrade pip setuptools wheel
-
-# Add an unprivileged user and set directory permissions
 RUN adduser --disabled-password --gecos "" reina \
     && chown -R reina:reina /Reina \
     && chmod +x /Reina/start.sh
 
 USER reina
 
-# Install dependencies
 RUN pip install --user --no-index --find-links=/Reina/wheels -r requirements.txt
 
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["/Reina/start.sh"]
 
 STOPSIGNAL SIGTERM
 
-# Image metadata
 LABEL org.opencontainers.image.title="Reina"
 LABEL org.opencontainers.image.description="A production-ready version of Beryl"
 LABEL org.opencontainers.image.url="https://github.com/No767/Reina"

@@ -52,7 +52,7 @@ class ReinaUtils(commands.Cog):
     async def version(self, ctx):
         """Returns Reina's Current Version"""
         embedVar = discord.Embed()
-        embedVar.description = "Build Version: v2.3.1"
+        embedVar.description = "Build Version: v2.4.0"
         await ctx.respond(embed=embedVar)
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
