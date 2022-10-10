@@ -10,7 +10,6 @@ import uvloop
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
 from dotenv import load_dotenv
-from help_utils import ReinaHelpUtils
 
 load_dotenv()
 
@@ -21,7 +20,6 @@ POSTGRES_USERNAME = os.getenv("Postgres_User")
 POSTGRES_PORT = os.getenv("Postgres_Port")
 HELP_CONNECTION_URI = f"postgresql+asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER_IP}:{POSTGRES_PORT}/{POSTGRES_HELP_DATABASE}"
 
-helpUtils = ReinaHelpUtils()
 
 parser = simdjson.Parser()
 hypixel_api_key = os.getenv("Hypixel_API_Key")

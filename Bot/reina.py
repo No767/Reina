@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from pathlib import Path
 
 import discord
@@ -11,6 +12,10 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 load_dotenv()
+
+path = Path(__file__).parents[1]
+packagePath = os.path.join(str(path), "Libs")
+sys.path.append(packagePath)
 
 REINA_TOKEN = os.getenv("Reina_Dev_Token")
 

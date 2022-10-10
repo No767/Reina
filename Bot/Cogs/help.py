@@ -16,7 +16,8 @@ class HelpSelect(discord.ui.Select):
                     description=cog.__doc__,
                 )
                 for cog_name, cog in cog.bot.cogs.items()
-                if cog_name not in ["EventTasks", "DisQuestListener"]
+                if cog_name
+                not in ["EventTasks", "DisQuestListener", "InteractionFailureHandler"]
             ],
         )
         self.cog = cog
@@ -67,7 +68,12 @@ class Help(commands.Cog):
                     [
                         cogs
                         for cogs in self.bot.cogs
-                        if cogs not in ["EventTasks", "DisQuestListener"]
+                        if cogs
+                        not in [
+                            "EventTasks",
+                            "DisQuestListener",
+                            "InteractionFailureHandler",
+                        ]
                     ]
                 )
             ),
