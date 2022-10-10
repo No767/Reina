@@ -42,7 +42,7 @@ COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
 COPY /Bot/help_utils/ /Reina/Bot/help_utils
-COPY /Debian-Docker/start.sh /Reina/start.sh
+COPY /Docker/Debian-Docker/start.sh /Reina/start.sh
 
 COPY --from=builder /Reina/wheels /Reina/wheels
 COPY --from=builder /Reina/requirements.txt /Reina/requirements.txt

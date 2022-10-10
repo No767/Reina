@@ -49,7 +49,7 @@ COPY /Bot/help_utils/ /Reina/Bot/help_utils
 COPY --from=builder /Reina/wheels /Reina/wheels
 COPY --from=builder /Reina/requirements.txt /Reina/requirements.txt
 
-COPY /Alpine-Docker/start.sh /Reina/start.sh
+COPY /Docker/Alpine-Docker/start.sh /Reina/start.sh
 
 RUN pip install --upgrade pip setuptools wheel
 
