@@ -23,7 +23,9 @@ Reddit_Secret = os.getenv("Reddit_Secret")
 jsonParser = simdjson.Parser()
 
 
-class RedditV1(commands.Cog):
+class Reddit(commands.Cog):
+    """Commands for interacting with Reddit"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -514,4 +516,4 @@ class RedditV1(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(RedditV1(bot))
+    bot.add_cog(Reddit(bot))

@@ -55,6 +55,8 @@ class View(discord.ui.View):
 
 
 class DisQuest(commands.Cog):
+    """Reina's Custom XP System - DisQuest"""
+
     def __init__(self, bot):
         self.bot = bot
 

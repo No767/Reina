@@ -8,8 +8,7 @@ from dateutil import parser
 from discord.commands import Option, SlashCommandGroup
 from discord.ext import commands, pages
 from dotenv import load_dotenv
-from genshin_wish_sim_utils import (ReinaWSUserInvUtils, ReinaWSUsersUtils,
-                                    ReinaWSUtils)
+from genshin_wish_sim_utils import ReinaWSUserInvUtils, ReinaWSUsersUtils, ReinaWSUtils
 from rin_exceptions import ItemNotFound, NoItemsError
 
 load_dotenv()
@@ -70,7 +69,9 @@ class PurgeView(discord.ui.View):
         )
 
 
-class ReinaGWS(commands.Cog):
+class GWS(commands.Cog):
+    """Commands for the Genshin Wish Sim"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -390,4 +391,4 @@ class ReinaGWS(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(ReinaGWS(bot))
+    bot.add_cog(GWS(bot))

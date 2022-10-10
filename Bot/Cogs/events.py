@@ -70,7 +70,9 @@ class View(discord.ui.View):
         await interaction.response.send_message("Well glad you choose not to...")
 
 
-class UserEvents(commands.Cog):
+class Events(commands.Cog):
+    """Reina's Events - Allows you to set custom events and reminders"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -358,4 +360,4 @@ class UserEvents(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(UserEvents(bot))
+    bot.add_cog(Events(bot))

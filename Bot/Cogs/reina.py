@@ -7,8 +7,8 @@ import time
 import discord
 import simdjson
 import uvloop
-from discord.commands import Option, SlashCommandGroup
-from discord.ext import commands, pages
+from discord.commands import SlashCommandGroup
+from discord.ext import commands
 from dotenv import load_dotenv
 from help_utils import ReinaHelpUtils
 
@@ -27,7 +27,9 @@ parser = simdjson.Parser()
 hypixel_api_key = os.getenv("Hypixel_API_Key")
 
 
-class ReinaUtils(commands.Cog):
+class Reina(commands.Cog):
+    """Commands for getting info about Reina"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -66,79 +68,6 @@ class ReinaUtils(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    @reina.command(name="help")
-    async def evenSmarterHelp(
-        self,
-        ctx,
-        *,
-        filters: Option(
-            str,
-            "The filters to choose from",
-            choices=[
-                "All",
-                "AniList",
-                "DisQuest",
-                "Events",
-                "Fun",
-                "GWS",
-                "Jisho",
-                "MangaDex",
-                "MyAnimeList",
-                "Reddit",
-                "Reina",
-                "Tenor",
-                "Utility",
-                "Waifu",
-            ],
-            required=False,
-        ),
-    ):
-        """The Help Command for Reina"""
-        if filters is None:
-            embedMain = discord.Embed(color=discord.Color.from_rgb(255, 201, 255))
-            embedMain.set_author(
-                name=f"Help", icon_url=self.bot.user.display_avatar.url
-            )
-            embedMain.description = "Welcome! Reina is a fork of Beryl, which focuses on improving features of Beryl, and adding new ones as well. To check out the commands, check out the filters option for a section by section breakdown of the commands."
-            await ctx.respond(embed=embedMain)
-        elif filters in ["All"]:
-            getAllCmds = await helpUtils.getAllCommands(uri=HELP_CONNECTION_URI)
-            mainPages = pages.Paginator(
-                pages=[
-                    discord.Embed(
-                        title=dict(mainItems)["name"],
-                        description=dict(mainItems)["description"],
-                    )
-                    .add_field(
-                        name="Parent Name",
-                        value=dict(mainItems)["parent_name"],
-                        inline=True,
-                    )
-                    .add_field(
-                        name="Module", value=dict(mainItems)["module"], inline=True
-                    )
-                    for mainItems in getAllCmds
-                ],
-                loop_pages=True,
-            )
-            await mainPages.respond(ctx.interaction, ephemeral=False)
-        else:
-            moduleType = str(filters).lower().strip()
-            mainRes = await helpUtils.getCmdsFromModule(
-                module=moduleType, uri=HELP_CONNECTION_URI
-            )
-            embed = discord.Embed(color=discord.Color.from_rgb(255, 201, 255))
-            embed.set_author(
-                name=f"Help - {filters}", icon_url=self.bot.user.display_avatar.url
-            )
-            for items in mainRes:
-                embed.add_field(
-                    name=f"`{dict(items)['name']}`",
-                    value=f"{dict(items)['description']}",
-                    inline=True,
-                )
-            await ctx.respond(embed=embed)
-
     @reina.command(name="platform")
     async def reinaPlatform(self, ctx):
         """Returns platform info about Reina"""
@@ -170,4 +99,4 @@ class ReinaUtils(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(ReinaUtils(bot))
+    bot.add_cog(Reina(bot))

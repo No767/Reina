@@ -16,7 +16,7 @@ class HelpSelect(discord.ui.Select):
                     description=cog.__doc__,
                 )
                 for cog_name, cog in cog.bot.cogs.items()
-                if cog_name not in ["EventTasks"]
+                if cog_name not in ["EventTasks", "DisQuestListener"]
             ],
         )
         self.cog = cog
@@ -39,13 +39,15 @@ class HelpSelect(discord.ui.Select):
 
 
 class Help(commands.Cog):
+    """Help commands for Reina"""
+
     def __init__(self, bot):
         self.bot = bot
 
     @slash_command(
         name="help",
         description="The help command page for Kumiko",
-        guild_ids=[970159505390325842],
+        guild_ids=[1006845509857714277],
     )
     async def help(self, ctx):
         embed = discord.Embed(title=self.bot.user.name)
@@ -61,7 +63,13 @@ class Help(commands.Cog):
         embed.add_field(
             name="Total Categories",
             value=str(
-                len([cogs for cogs in self.bot.cogs if cogs not in ["EventTasks"]])
+                len(
+                    [
+                        cogs
+                        for cogs in self.bot.cogs
+                        if cogs not in ["EventTasks", "DisQuestListener"]
+                    ]
+                )
             ),
             inline=True,
         )

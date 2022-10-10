@@ -15,7 +15,9 @@ parser = simdjson.Parser()
 hypixel_api_key = os.getenv("Hypixel_API_Key")
 
 
-class Utils(commands.Cog):
+class Utility(commands.Cog):
+    """Utility commands for Reina"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -77,4 +79,4 @@ class Utils(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Utils(bot))
+    bot.add_cog(Utility(bot))

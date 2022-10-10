@@ -15,7 +15,9 @@ logging.basicConfig(
 )
 
 
-class fun_stuff(commands.Cog):
+class Fun(commands.Cog):
+    """Some random and fun commands"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -113,4 +115,4 @@ class fun_stuff(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(fun_stuff(bot))
+    bot.add_cog(Fun(bot))
