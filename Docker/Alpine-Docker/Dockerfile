@@ -44,19 +44,20 @@ COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
 COPY /Bot/help_utils/ /Reina/Bot/help_utils
+COPY /Docker/Alpine-Docker/start.sh /Reina/start.sh
+COPY /Docker/Alpine-Docker/wait-for /Reina/wait-for
 
 # Copy dependency wheels from builder stage
 COPY --from=builder /Reina/wheels /Reina/wheels
 COPY --from=builder /Reina/requirements.txt /Reina/requirements.txt
-
-COPY /Docker/Alpine-Docker/start.sh /Reina/start.sh
 
 RUN pip install --upgrade pip setuptools wheel
 
 # Add an unprivileged user and set directory permissions
 RUN adduser --disabled-password --gecos "" reina \
     && chown -R reina:reina /Reina \
-    && chmod +x /Reina/start.sh
+    && chmod +x /Reina/start.sh \
+    && chmod +x /Reina/wait-for
 
 USER reina
 

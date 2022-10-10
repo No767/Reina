@@ -28,6 +28,9 @@ asyncpraw = "^7.5.0"
 pre-commit = "^2.19.0"
 pyinstrument = "^4.3.0"
 
+[tool.isort]
+profile = 'black'
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
