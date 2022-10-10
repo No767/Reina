@@ -41,7 +41,7 @@ WORKDIR /Reina
 COPY /Bot/reina.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/genshin_wish_sim_utils/ /Reina/Bot/genshin_wish_sim_utils
-COPY /Bot/help_utils/ /Reina/Bot/help_utils
+COPY /Scripts/legacy-seeder.py /Reina/legacy-seeder.py
 COPY /Docker/Debian-Docker/start.sh /Reina/start.sh
 COPY /Docker/Debian-Docker/wait-for /Reina/wait-for
 
