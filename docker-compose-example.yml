@@ -1,32 +1,31 @@
 version: "3.9"
 services:
+  postgres:
+    container_name: Reina-Postgres
+    image: no767/reina-postgres:edge
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   reina:
     container_name: Reina
+    image: no767/reina:edge
     restart: always
-    image: no767/reina:latest
-    env_file:
-      - .env-example # Re-name this to .env
     deploy:
       restart_policy:
         condition: on-failure
         delay: 0s
-        max_attempts: 3
+        max_attempts: 5
         window: 120s
       mode: replicated
+    command: sh -c '/Reina/wait-for postgres:5432 -- echo "[Wait-for] PostgreSQL is fully ready. Starting up Reina" && /Reina/start.sh'
+    env_file:
+      - .env
     depends_on:
       - postgres
 
-  postgres:
-    container_name: Reina-Postgres
-    image: postgres:14.5 # Use the Alpine version if you are running low on storage
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=Reina
-      - POSTGRES_DB=Reina
-    volumes:
-      - prod_postgres_volume:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-
 volumes:
-  prod_postgres_volume:
+  postgres_volume:
