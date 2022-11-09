@@ -27,6 +27,29 @@ CONNECTION_URI = f"asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_S
 eventUtils = ReinaEventsUtils(uri=CONNECTION_URI, models=["reina_events.models"])
 
 
+class ModalViewTest(discord.ui.Modal):
+    def __init__(self, bot):
+
+        children = (
+            [
+                discord.ui.InputText(
+                    placeholder="test",
+                    label="testing",
+                    style=discord.InputTextStyle.short,
+                )
+            ],
+        )
+        super().__init__(
+            title="test",
+            # min_length=1,
+            # max_length=255
+        )
+        self.bot = bot
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f"testing has begun - {self.values}")
+
+
 class PurgeAllUserEventsView(discord.ui.View):
     async def on_timeout(self):
         for child in self.children:
@@ -251,6 +274,11 @@ class ReinaEventsCmds(commands.Cog):
         await ctx.respond(embed=embed, view=PurgeAllUserEventsView(), ephemeral=True)
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+    @eventsView.command(name="modal-test")
+    async def testingModals(self, ctx):
+        view = discord.ui.View(ModalViewTest(self))
+        await ctx.respond("test", view=view)
 
     @eventsView.command(name="countdown")
     async def eventCountdown(self, ctx, *, name: Option(str, "The name of the event")):

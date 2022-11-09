@@ -6,7 +6,7 @@ import uvloop
 from tortoise import Tortoise
 from tortoise.transactions import in_transaction
 
-from . import ReinaEvents
+from .models import ReinaEvents
 
 
 class ReinaEventsUtils:

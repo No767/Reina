@@ -15,7 +15,7 @@ logging.basicConfig(
 
 path = Path(__file__).parents[0]
 packagePath = os.path.join(str(path), "Bot")
-libsPath = os.path.join(str(path), "Libs")
+libsPath = os.path.join(str(path), "Bot", "Libs")
 envPath = os.path.join(str(path), "Bot", ".env")
 sys.path.append(packagePath)
 sys.path.append(libsPath)
