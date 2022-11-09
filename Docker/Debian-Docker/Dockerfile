@@ -1,7 +1,7 @@
 ####################################################################################################
 ## Builder image
 ####################################################################################################
-FROM python:3.10.7-slim-bullseye AS builder
+FROM python:3.10-slim-bullseye AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive 
 
@@ -28,7 +28,7 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 ####################################################################################################
 ## Final image
 ####################################################################################################
-FROM python:3.10.7-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 RUN apt update \
     && apt install -y --no-install-recommends \
@@ -39,6 +39,7 @@ RUN apt update \
 WORKDIR /Reina
 
 COPY /Bot/reina.py /Reina/Bot/
+COPY /Bot/reina_core.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/Libs/genshin_wish_sim_utils/ /Reina/Bot/Libs/genshin_wish_sim_utils
 COPY /Bot/Libs/reina_events /Reina/Bot/Libs/reina_events

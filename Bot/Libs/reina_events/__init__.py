@@ -1,4 +1,5 @@
+from .context_manager import ReinaEventsContextManager
 from .events import ReinaEventsUtils
 from .models import ReinaEvents
 
-__all__ = ["ReinaEvents", "ReinaEventsUtils"]
+__all__ = ["ReinaEvents", "ReinaEventsUtils", "ReinaEventsContextManager"]

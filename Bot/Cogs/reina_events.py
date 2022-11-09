@@ -1,6 +1,5 @@
 import asyncio
 import os
-import uuid
 from datetime import datetime, timezone
 
 import discord
@@ -11,6 +10,7 @@ from discord.commands import Option, SlashCommandGroup
 from discord.ext import commands, pages
 from dotenv import load_dotenv
 from reina_events import ReinaEvents, ReinaEventsUtils
+from reina_ui import AddEventModal, DeleteOneEventModal, PurgeAllEventsView
 from rin_exceptions import ItemNotFound, NoItemsError
 from tortoise import Tortoise
 
@@ -25,71 +25,6 @@ CONNECTION_URI = f"asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_S
 
 
 eventUtils = ReinaEventsUtils(uri=CONNECTION_URI, models=["reina_events.models"])
-
-
-class ModalViewTest(discord.ui.Modal):
-    def __init__(self, bot):
-
-        children = (
-            [
-                discord.ui.InputText(
-                    placeholder="test",
-                    label="testing",
-                    style=discord.InputTextStyle.short,
-                )
-            ],
-        )
-        super().__init__(
-            title="test",
-            # min_length=1,
-            # max_length=255
-        )
-        self.bot = bot
-
-    async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f"testing has begun - {self.values}")
-
-
-class PurgeAllUserEventsView(discord.ui.View):
-    async def on_timeout(self):
-        for child in self.children:
-            child.disabled = True
-
-    @discord.ui.button(
-        label="Yes",
-        row=0,
-        style=discord.ButtonStyle.primary,
-        emoji=discord.PartialEmoji.from_str("<:check:314349398811475968>"),
-    )
-    async def button_callback(self, button, interaction):
-        getAllUserEvents = await eventUtils.getAllUserEvents(
-            user_id=interaction.user.id
-        )
-        try:
-            if len(getAllUserEvents) == 0 or getAllUserEvents is None:
-                raise NoItemsError
-            else:
-                await eventUtils.purgeAllUserEvents(user_id=interaction.user.id)
-                await interaction.response.send_message(
-                    "All events have been purged", ephemeral=True
-                )
-        except NoItemsError:
-            await interaction.response.send_message(
-                "There seems to be no events to delete. Cancelling action...",
-                ephemeral=True,
-            )
-
-    @discord.ui.button(
-        label="No",
-        row=0,
-        style=discord.ButtonStyle.primary,
-        emoji=discord.PartialEmoji.from_str("<:xmark:314349398824058880>"),
-    )
-    async def second_button_callback(self, button, interaction):
-        await interaction.response.send_message(
-            f"The action has been cancelled by the user {interaction.user.name}",
-            ephemeral=True,
-        )
 
 
 class ReinaEventsCmds(commands.Cog):
@@ -111,28 +46,12 @@ class ReinaEventsCmds(commands.Cog):
     )
 
     @events.command(name="create")
-    async def eventCreate(
-        self,
-        ctx,
-        *,
-        name: Option(str, "The name of the event"),
-        description: Option(str, "The description of the event"),
-        date: Option(str, "The date of the event"),
-        time: Option(str, "The time of the event"),
-    ):
+    async def eventCreate(self, ctx):
         """Creates an event"""
-        currentDatetime = datetime.utcnow()
-        eventDatetime = parser.parse(f"{date} {time}")
-        await eventUtils.addEvent(
-            uuid=uuid.uuid4(),
-            user_id=ctx.author.id,
-            name=name,
-            description=description,
-            date_added=currentDatetime,
-            event_date=eventDatetime,
-            event_passed=False,
+        addModal = AddEventModal(
+            uri=CONNECTION_URI, models=["reina_events.models"], title="Create an event"
         )
-        await ctx.respond(f"Event {name} has been created")
+        await ctx.send_modal(addModal)
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
@@ -242,43 +161,26 @@ class ReinaEventsCmds(commands.Cog):
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    # Later on this should use a modal just to be secure
     @eventsDelete.command(name="one")
-    async def eventDeleteOne(self, ctx, *, name: Option(str, "The name of the event")):
+    async def eventDeleteOne(self, ctx):
         """Deletes an event belonging to the user"""
-        eventData = await eventUtils.getFirstUserEventsName(
-            user_id=ctx.author.id, name=name
+        deleteModal = DeleteOneEventModal(
+            uri=CONNECTION_URI, models=["reina_events.models"], title="Delete a event"
         )
-        try:
-            if eventData is None:
-                raise NoItemsError
-            else:
-                await ReinaEvents.filter(name=name, user_id=ctx.author.id).delete()
-                embedSuccess = discord.Embed()
-                embedSuccess.description = f"Successfully deleted the event {name}"
-                await ctx.respond(embed=embedSuccess, ephemeral=True)
-        except ItemNotFound:
-            embedError = discord.Embed()
-            embedError.description = (
-                f"No items could be found with the name {name}. Please try again"
-            )
-            await ctx.respond(embedError, ephemeral=True)
-
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+        await ctx.send_modal(deleteModal)
 
     @eventsDelete.command(name="all")
     async def eventDeleteAll(self, ctx):
         """Deletes all of the events that a user has"""
         embed = discord.Embed()
         embed.description = "Are you sure you want to delete all of your events? This action cannot be undone"
-        await ctx.respond(embed=embed, view=PurgeAllUserEventsView(), ephemeral=True)
+        await ctx.respond(
+            embed=embed,
+            view=PurgeAllEventsView(uri=CONNECTION_URI, models=["reina_events.models"]),
+            ephemeral=True,
+        )
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
-    @eventsView.command(name="modal-test")
-    async def testingModals(self, ctx):
-        view = discord.ui.View(ModalViewTest(self))
-        await ctx.respond("test", view=view)
 
     @eventsView.command(name="countdown")
     async def eventCountdown(self, ctx, *, name: Option(str, "The name of the event")):

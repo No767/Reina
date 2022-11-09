@@ -3,7 +3,7 @@ from tortoise.models import Model
 
 
 class ReinaEvents(Model):
-    uuid = fields.UUIDField(pk=True)
+    uuid = fields.CharField(max_length=255, pk=True)
     user_id = fields.BigIntField()
     name = fields.CharField(max_length=255)
     description = fields.TextField()

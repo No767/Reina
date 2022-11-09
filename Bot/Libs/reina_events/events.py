@@ -4,8 +4,8 @@ from datetime import datetime
 
 import uvloop
 from tortoise import Tortoise
-from tortoise.transactions import in_transaction
 
+from .context_manager import ReinaEventsContextManager
 from .models import ReinaEvents
 
 
@@ -36,8 +36,7 @@ class ReinaEventsUtils:
             event_date (datetime): The date of the event
             event_passed (bool): Whether the event has passed or not
         """
-        await Tortoise.init(db_url=self.uri, modules={"models": self.models})
-        async with in_transaction() as conn:
+        async with ReinaEventsContextManager(uri=self.uri, models=self.models):
             await ReinaEvents.create(
                 uuid=uuid,
                 user_id=user_id,
@@ -46,7 +45,6 @@ class ReinaEventsUtils:
                 date_added=date_added,
                 event_date=event_date,
                 event_passed=event_passed,
-                using_db=conn,
             )
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
@@ -129,13 +127,14 @@ class ReinaEventsUtils:
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-    async def purgeAllUserEvents(self, user_id: int) -> None:
-        """Purges all of the user events data belonging to that user
+    async def prugeOneUserEvent(self, user_id: int, name: str) -> None:
+        """Purges one event from the DB
 
         Args:
             user_id (int): Discord user ID
+            name (str): Event name
         """
-        await Tortoise.init(db_url=self.uri, modules={"models": self.models})
-        await ReinaEvents.filter(user_id=user_id).delete()
+        async with ReinaEventsContextManager(uri=self.uri, models=self.models):
+            await ReinaEvents.filter(user_id=user_id, name=name).delete()
 
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
