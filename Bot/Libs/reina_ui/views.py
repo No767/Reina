@@ -2,7 +2,7 @@ import asyncio
 
 import discord
 import uvloop
-from reina_events import ReinaEvents, ReinaEventsContextManager, ReinaEventsUtils
+from reina_events import ReinaEvents, ReinaEventsContextManager
 from rin_exceptions import NoItemsError
 
 
@@ -15,7 +15,6 @@ class PurgeAllEventsView(discord.ui.View):
         super().__init__(*args, **kwargs)
         self.uri = uri
         self.models = models
-        self.eventUtils = ReinaEventsUtils(uri=self.uri, models=self.models)
 
     @discord.ui.button(
         label="Yes",
