@@ -44,7 +44,6 @@ COPY /Bot/Cogs/ /Reina/Bot/Cogs
 COPY /Bot/Libs/genshin_wish_sim_utils/ /Reina/Bot/Libs/genshin_wish_sim_utils
 COPY /Bot/Libs/reina_events /Reina/Bot/Libs/reina_events
 COPY /Bot/Libs/reina_ui /Reina/Bot/Libs/reina_ui
-COPY /Scripts/legacy-seeder.py /Reina/legacy-seeder.py
 COPY /Scripts/postgres-seeder.py /Reina/postgres-seeder.py
 COPY /Docker/Debian-Docker/start.sh /Reina/start.sh
 COPY /Docker/Debian-Docker/wait-for /Reina/wait-for
