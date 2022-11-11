@@ -1,5 +1,8 @@
 import asyncio
 import os
+import sys
+import urllib.parse
+from pathlib import Path
 
 import discord
 import uvloop
@@ -16,9 +19,14 @@ from reina_ui import (
 )
 from rin_exceptions import ItemNotFound, NoItemsError
 
+path = Path(__file__).parents[1].absolute()
+packagePath = os.path.join(str(path), "Libs")
+envPath = os.path.join(str(path), ".env")
+sys.path.append(packagePath)
+
 load_dotenv()
 
-POSTGRES_PASSWORD = os.getenv("Postgres_Password")
+POSTGRES_PASSWORD = urllib.parse.quote_plus(os.getenv("Postgres_Password"))
 POSTGRES_SERVER_IP = os.getenv("Postgres_IP")
 POSTGRES_DATABASE = os.getenv("Postgres_Database")
 POSTGRES_USERNAME = os.getenv("Postgres_User")

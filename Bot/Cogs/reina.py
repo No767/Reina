@@ -1,28 +1,12 @@
 import asyncio
 import datetime
-import os
 import platform
 import time
 
 import discord
-import simdjson
 import uvloop
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
-from dotenv import load_dotenv
-
-load_dotenv()
-
-POSTGRES_PASSWORD = os.getenv("Postgres_Password")
-POSTGRES_SERVER_IP = os.getenv("Postgres_IP")
-POSTGRES_HELP_DATABASE = os.getenv("Postgres_Help_Database")
-POSTGRES_USERNAME = os.getenv("Postgres_User")
-POSTGRES_PORT = os.getenv("Postgres_Port")
-HELP_CONNECTION_URI = f"postgresql+asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER_IP}:{POSTGRES_PORT}/{POSTGRES_HELP_DATABASE}"
-
-
-parser = simdjson.Parser()
-hypixel_api_key = os.getenv("Hypixel_API_Key")
 
 
 class Reina(commands.Cog):
@@ -73,22 +57,10 @@ class Reina(commands.Cog):
         embed.title = "Platform Info"
         embed.set_thumbnail(url=self.bot.user.display_avatar.url)
         embed.add_field(
-            name="Machine Architecture", value=f"[{platform.machine()}]", inline=True
-        )
-        embed.add_field(
-            name="Python Implementation",
-            value=f"[{platform.python_implementation()}]",
-            inline=True,
-        )
-        embed.add_field(
             name="Python Version", value=f"[{platform.python_version()}]", inline=True
         )
         embed.add_field(
             name="Python Compiler", value=f"[{platform.python_compiler()}]", inline=True
-        )
-        embed.add_field(name="System", value=f"[{platform.system()}]", inline=True)
-        embed.add_field(
-            name="System Kernel", value=f"[{platform.release()}]", inline=True
         )
         embed.add_field(
             name="Pycord Version", value=f"[{discord.__version__}]", inline=True
