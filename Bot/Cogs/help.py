@@ -15,7 +15,7 @@ class HelpSelect(discord.ui.Select):
                     label=cog_name,
                     description=cog.__doc__,
                 )
-                for cog_name, cog in cog.bot.cogs.items()
+                for cog_name, cog in sorted(cog.bot.cogs.items())
                 if cog_name
                 not in ["EventTasks", "DisQuestListener", "InteractionFailureHandler"]
             ],
@@ -47,8 +47,7 @@ class Help(commands.Cog):
 
     @slash_command(
         name="help",
-        description="The help command page for Kumiko",
-        guild_ids=[1006845509857714277],
+        description="The help command page for Reina",
     )
     async def help(self, ctx):
         embed = discord.Embed(title=self.bot.user.name)
