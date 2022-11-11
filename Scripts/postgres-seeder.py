@@ -15,7 +15,7 @@ logging.basicConfig(
     datefmt="[%m/%d/%Y] [%I:%M:%S %p %Z]",
 )
 
-path = Path(__file__).parents[1]
+path = Path(__file__).parents[0]
 packagePath = os.path.join(str(path), "Bot")
 libsPath = os.path.join(str(path), "Bot", "Libs")
 envPath = os.path.join(str(path), "Bot", ".env")
