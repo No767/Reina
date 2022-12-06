@@ -16,7 +16,7 @@ orjson = "^3.8.3"
 python-dateutil = "^2.8.2"
 rin-exceptions = "^1.0.2"
 Brotli = "^1.0.9"
-numpy = "^1.23.4"
+numpy = "^1.23.5"
 asyncpraw = "^7.6.1"
 tortoise-orm = {extras = ["accel"], version = "^0.19.2"}
 aiocron = "^1.8"
