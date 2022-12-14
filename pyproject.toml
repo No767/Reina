@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "Reina"
 version = "3.0.0"
-description = "A high performance, production-ready version of Beryl"
+description = "A high performance, production-ready fork of Beryl"
 authors = ["No767 <73260931+No767@users.noreply.github.com>"]
 license = "Apache-2.0"
 readme = "README.md"
@@ -28,6 +28,10 @@ ciso8601 = "^2.2.0"
 python-rapidjson = "^1.9"
 ormsgpack = "^1.2.4"
 
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.20.0"
+pyinstrument = "^4.4.0"
 
 [build-system]
 requires = ["poetry-core"]

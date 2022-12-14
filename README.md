@@ -8,7 +8,7 @@
 [![Required Python Version](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://github.com/No767/Reina/blob/dev/pyproject.toml) [![CodeQL](https://github.com/No767/Reina/actions/workflows/codeql.yml/badge.svg?branch=dev&event=push)](https://github.com/No767/Reina/actions/workflows/codeql.yml) [![Docker Build](https://github.com/No767/Reina/actions/workflows/docker-build.yml/badge.svg)](https://github.com/No767/Reina/actions/workflows/docker-build.yml) ![GitHub](https://img.shields.io/github/license/No767/Reina?label=License&logo=github)
 
 
-A production-ready fork of Beryl
+A high performance, production-ready fork of Beryl
 
 <div align=left>
 
