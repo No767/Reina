@@ -2,7 +2,7 @@ version: "3.9"
 services:
   postgres:
     container_name: Reina-Postgres-Dev
-    image: postgres:15
+    image: no767/reina-postgres:edge
     env_file:
       - .env
     volumes:

@@ -2,7 +2,7 @@ import asyncio
 import logging
 import os
 import sys
-import urllib
+import urllib.parse
 from pathlib import Path
 
 import uvloop
