@@ -10,13 +10,14 @@ from dateutil.relativedelta import relativedelta
 from discord.commands import Option, SlashCommandGroup
 from discord.ext import commands, pages
 from dotenv import load_dotenv
-from reina_events import ReinaEvents, ReinaEventsContextManager
+from reina_events import ReinaEvents
 from reina_ui import (
     AddEventModal,
     DeleteOneEventModal,
     PurgeAllEventsView,
     UpdateEventModal,
 )
+from reina_utils import ReinaCM
 from rin_exceptions import ItemNotFound, NoItemsError
 
 path = Path(__file__).parents[1].absolute()
@@ -66,9 +67,7 @@ class Events(commands.Cog):
         ),
     ):
         """Views events that you have"""
-        async with ReinaEventsContextManager(
-            uri=CONNECTION_URI, models=["reina_events.models"]
-        ):
+        async with ReinaCM(uri=CONNECTION_URI, models=["reina_events.models"]):
             events = await ReinaEvents.filter(user_id=ctx.user.id).all().values()
             if filter == "Upcoming":
                 events = await ReinaEvents.filter(
@@ -147,9 +146,7 @@ class Events(commands.Cog):
     @events.command(name="countdown")
     async def eventCountdown(self, ctx, *, name: Option(str, "The name of the event")):
         """Checks how much days until an event will happen and pass"""
-        async with ReinaEventsContextManager(
-            uri=CONNECTION_URI, models=["reina_events.models"]
-        ):
+        async with ReinaCM(uri=CONNECTION_URI, models=["reina_events.models"]):
             eventData = (
                 await ReinaEvents.filter(user_id=ctx.user.id, name=name)
                 .first()

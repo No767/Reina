@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 import sys
@@ -5,8 +6,9 @@ import urllib.parse
 from pathlib import Path
 
 import discord
+import uvloop
 from dotenv import load_dotenv
-from reina_core import ReinaCore
+from reinacore import ReinaCore
 
 # Set up needed intents
 intents = discord.Intents.default()
@@ -37,4 +39,5 @@ logging.getLogger("tortoise").setLevel(logging.WARNING)
 bot = ReinaCore(uri=CONNECTION_URI, models=["reina_events.models"], intents=intents)
 
 if __name__ == "__main__":
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
     bot.run(REINA_TOKEN)

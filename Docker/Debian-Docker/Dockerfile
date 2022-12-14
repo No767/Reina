@@ -39,11 +39,9 @@ RUN apt update \
 WORKDIR /Reina
 
 COPY /Bot/reina.py /Reina/Bot/
-COPY /Bot/reina_core.py /Reina/Bot/
+COPY /Bot/reinacore.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
-COPY /Bot/Libs/genshin_wish_sim_utils/ /Reina/Bot/Libs/genshin_wish_sim_utils
-COPY /Bot/Libs/reina_events /Reina/Bot/Libs/reina_events
-COPY /Bot/Libs/reina_ui /Reina/Bot/Libs/reina_ui
+COPY /Bot/Libs/ /Reina/Bot/Libs
 COPY /Scripts/postgres-seeder.py /Reina/postgres-seeder.py
 COPY /Docker/Debian-Docker/start.sh /Reina/start.sh
 COPY /Docker/Debian-Docker/wait-for /Reina/wait-for

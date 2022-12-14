@@ -3,9 +3,9 @@ import logging
 
 import uvloop
 from discord.utils import utcnow
+from reina_utils import ReinaCM
 from rin_exceptions import NoItemsError
 
-from .context_manager import ReinaEventsContextManager
 from .models import ReinaEvents
 
 logging.basicConfig(
@@ -22,7 +22,7 @@ async def ReinaEventsChecker(uri: str, models: list):
         uri (str): DB Connection URI
         models (list): Models to be used
     """
-    async with ReinaEventsContextManager(uri=uri, models=models):
+    async with ReinaCM(uri=uri, models=models):
         getUpcomingEvents = await ReinaEvents.filter(event_passed=False).all().values()
         currTime = utcnow()
         try:
@@ -36,7 +36,7 @@ async def ReinaEventsChecker(uri: str, models: list):
                             event_item_uuid=items["event_item_uuid"]
                         ).update(event_passed=True)
         except NoItemsError:
-            logging.warn(
+            logging.warning(
                 "No events either cannot be found, or have all passed. Will continue to check for more"
             )
 

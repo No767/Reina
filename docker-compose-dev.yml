@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: Reina-Postgres-Dev
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - dev_postgres_volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+
+  redis:
+    container_name: Reina-Redis-Dev
+    image: redis:7
+    ports:
+      - 6379:6379
+    volumes:
+      - dev_redis_volume:/data
+    command: redis-server --save 60 1 --loglevel warning
+
+volumes:
+  dev_postgres_volume:
+  dev_redis_volume:

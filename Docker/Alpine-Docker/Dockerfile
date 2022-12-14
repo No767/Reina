@@ -3,7 +3,7 @@
 ####################################################################################################
 # Credits to Ellie (@TheSilkky) for the original system + Dockerfile
 # Modifed for use with Poetry
-FROM python:3.10-alpine3.16 AS builder
+FROM python:3.11-alpine AS builder
 
 RUN apk add --no-cache \
     ca-certificates \
@@ -31,7 +31,7 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 ####################################################################################################
 ## Final image
 ####################################################################################################
-FROM python:3.10-alpine3.16
+FROM python:3.11-alpine
 
 RUN apk add --no-cache \
     ca-certificates \
@@ -41,11 +41,9 @@ RUN apk add --no-cache \
 WORKDIR /Reina
 
 COPY /Bot/reina.py /Reina/Bot/
-COPY /Bot/reina_core.py /Reina/Bot/
+COPY /Bot/reinacore.py /Reina/Bot/
 COPY /Bot/Cogs/ /Reina/Bot/Cogs
-COPY /Bot/Libs/genshin_wish_sim_utils/ /Reina/Bot/Libs/genshin_wish_sim_utils
-COPY /Bot/Libs/reina_events /Reina/Bot/Libs/reina_events
-COPY /Bot/Libs/reina_ui /Reina/Bot/Libs/reina_ui
+COPY /Bot/Libs/ /Reina/Bot/Libs
 COPY /Scripts/postgres-seeder.py /Reina/postgres-seeder.py
 COPY /Docker/Alpine-Docker/start.sh /Reina/start.sh
 COPY /Docker/Alpine-Docker/wait-for /Reina/wait-for
