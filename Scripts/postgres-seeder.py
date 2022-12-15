@@ -25,16 +25,17 @@ sys.path.append(libsPath)
 load_dotenv(dotenv_path=envPath)
 
 POSTGRES_PASSWORD = urllib.parse.quote_plus(os.getenv("Postgres_Password"))
-POSTGRES_SERVER_IP = os.getenv("Postgres_IP")
-POSTGRES_DATABASE = os.getenv("Postgres_Database")
-POSTGRES_USERNAME = os.getenv("Postgres_User")
+POSTGRES_SERVER_IP = os.getenv("Postgres_Host")
+POSTGRES_DATABASE = os.getenv("Postgres_Reina_Database")
+POSTGRES_USERNAME = os.getenv("Postgres_Username")
 POSTGRES_PORT = os.getenv("Postgres_Port")
 CONNECTION_URI = f"asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER_IP}:{POSTGRES_PORT}/{POSTGRES_DATABASE}"
 
 
 async def main():
     await Tortoise.init(
-        db_url=CONNECTION_URI, modules={"models": ["reina_events.models"]}
+        db_url=CONNECTION_URI,
+        modules={"models": ["reina_events.models", "reina_genshin_wish_sim.models"]},
     )
     await Tortoise.generate_schemas()
 

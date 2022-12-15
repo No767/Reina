@@ -27,7 +27,7 @@ class ReinaCore(discord.Bot):
             if items.endswith(".py"):
                 self.load_extension(f"Cogs.{items[:-3]}", store=False)
 
-    @tasks.loop(seconds=5)
+    @tasks.loop(hours=1)
     async def eventHandler(self):
         await ReinaEventsChecker(uri=self.uri, models=self.models)
 

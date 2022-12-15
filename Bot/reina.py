@@ -22,9 +22,9 @@ sys.path.append(packagePath)
 
 REINA_TOKEN = os.getenv("Reina_Dev_Token")
 POSTGRES_PASSWORD = urllib.parse.quote_plus(os.getenv("Postgres_Password"))
-POSTGRES_SERVER_IP = os.getenv("Postgres_IP")
-POSTGRES_DATABASE = os.getenv("Postgres_Database")
-POSTGRES_USERNAME = os.getenv("Postgres_User")
+POSTGRES_SERVER_IP = os.getenv("Postgres_Host")
+POSTGRES_DATABASE = os.getenv("Postgres_Reina_Database")
+POSTGRES_USERNAME = os.getenv("Postgres_Username")
 POSTGRES_PORT = os.getenv("Postgres_Port")
 CONNECTION_URI = f"asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER_IP}:{POSTGRES_PORT}/{POSTGRES_DATABASE}"
 
