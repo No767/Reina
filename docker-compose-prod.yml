@@ -10,6 +10,17 @@ services:
       - postgres_volume:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  redis:
+    container_name: Reina-Redis-Dev
+    image: redis:7
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_volume:/data
+    command: redis-server --save 60 1 --loglevel warning
+
   reina:
     container_name: Reina
     image: no767/reina:edge
@@ -21,11 +32,13 @@ services:
         max_attempts: 5
         window: 120s
       mode: replicated
-    command: sh -c '/Reina/wait-for postgres:5432 -- echo "[Wait-for] PostgreSQL is fully ready. Starting up Reina" && /Reina/start.sh'
+    command: sh -c '/Reina/wait-for postgres:5432 -- echo "[Wait-for] PostgreSQL is fully up. Waiting for Redis" && /Reina/wait-for redis:6379 -- echo "[Wait-for] Both PostgreSQL and Redis are fully ready. Starting up Reina" && /Reina/start.sh'
     env_file:
       - .env
     depends_on:
       - postgres
+      - redis
 
 volumes:
-  postgres_volume:
+  postgres_volume: 
+  redis_volume:

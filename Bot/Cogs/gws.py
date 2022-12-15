@@ -240,7 +240,7 @@ class GWS(commands.Cog):
         except NoItemsError:
             embedError = discord.Embed()
             embedError.description = "Sorry, but it seems like there are no items in your inventory. Please try again"
-            await ctx.respond(embed=embedError)
+            await ctx.respond(embed=embedError, ephemeral=False)
 
     @gwsUserInvDelete.command(name="one")
     async def deleteOneUserInv(self, ctx: discord.ApplicationContext):
@@ -290,11 +290,11 @@ class GWS(commands.Cog):
                         ),
                     )
                     embed.set_thumbnail(url=getUserInfo.display_avatar.url)
-                    await ctx.respond(embed=embed, ephemeral=True)
+                    await ctx.respond(embed=embed, ephemeral=False)
             except ItemNotFound:
                 embedError = discord.Embed()
                 embedError.description = "Sorry, but it seems like you don't have a profile. Make a pull to create one"
-                await ctx.respond(embed=embedError, ephemeral=True)
+                await ctx.respond(embed=embedError, ephemeral=False)
 
 
 def setup(bot):

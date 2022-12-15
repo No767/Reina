@@ -52,7 +52,7 @@ class ReinaGWSCacheUtils:
                 userData = await WSUser.filter(user_id=user_id).first().values()
                 if userData is None:
                     return None
-                await self.cache.setDictCommandCache(key=key, value=userData, ttl=20)
+                await self.cache.setDictCommandCache(key=key, value=userData, ttl=15)
                 return userData
         else:
             return await self.cache.getDictCommandCache(key=key)
@@ -82,7 +82,7 @@ class ReinaGWSCacheUtils:
                 if len(userInvData) == 0:
                     return None
                 await self.cache.setBasicCommandCache(
-                    key=key, value=userInvData, ttl=60
+                    key=key, value=userInvData, ttl=15
                 )
                 return userInvData
         else:
@@ -117,7 +117,7 @@ class ReinaGWSCacheUtils:
                 )
                 if userInvItem is None:
                     return None
-                await self.cache.setDictCommandCache(key=key, value=userInvItem, ttl=60)
+                await self.cache.setDictCommandCache(key=key, value=userInvItem, ttl=30)
                 return userInvItem
         else:
             return await self.cache.getDictCommandCache(key=key)

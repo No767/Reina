@@ -40,35 +40,49 @@ fi
 if [[ -v POSTGRES_PASSWORD ]]; then
     echo "Postgres_Password=${POSTGRES_PASSWORD}" >> /Reina/Bot/.env
 else
-    echo "Missing Postgres_Password env var! Postgres_Password environment variable is not set."
+    echo "Missing POSTGRES_PASSWORD env var! Postgres_Password environment variable is not set."
     exit 1;
 fi
 
-if [[ -v POSTGRES_IP ]]; then
-    echo "Postgres_IP=${POSTGRES_IP}" >> /Reina/Bot/.env
+if [[ -v POSTGRES_HOST ]]; then
+    echo "Postgres_Host=${POSTGRES_HOST}" >> /Reina/Bot/.env
 else
-    echo "Missing Postgres_IP env var! POSTGRES_IP environment variable is not set."
+    echo "Missing POSTGRES_HOST env var! Postgres_Host environment variable is not set."
     exit 1;
 fi
 
 if [[ -v POSTGRES_USER ]]; then
-    echo "Postgres_User=${POSTGRES_USER}" >> /Reina/Bot/.env
+    echo "Postgres_Username=${POSTGRES_USER}" >> /Reina/Bot/.env
 else
-    echo "Missing Postgres_User env var! POSTGRES_USER environment variable is not set."
+    echo "Missing POSTGRES_USER env var! Postgres_User environment variable is not set."
     exit 1;
 fi
 
-if [[ -v POSTGRES_DB ]]; then
-    echo "Postgres_Database=${POSTGRES_DB}" >> /Reina/Bot/.env
+if [[ -v POSTGRES_REINA_DB ]]; then
+    echo "Postgres_Reina_Database=${POSTGRES_REINA_DB}" >> /Reina/Bot/.env
 else
-    echo "Missing Postgres_Database env var! POSTGRES_DB environment variable is not set."
+    echo "Missing POSTGRES_REINA_DB env var! Postgres_Reina_Database environment variable is not set."
     exit 1;
 fi
 
 if [[ -v POSTGRES_PORT ]]; then
     echo "Postgres_Port=${POSTGRES_PORT}" >> /Reina/Bot/.env
 else
-    echo "Missing Postgres_Port env var ! POSTGRES_PORT environment variable is not set."
+    echo "Missing POSTGRES_PORT env var ! Postgres_Port environment variable is not set."
+    exit 1;
+fi
+
+if [[ -v REDIS_HOST ]]; then
+    echo "Redis_Host=${REDIS_HOST}" >> /Reina/Bot/.env
+else
+    echo "Missing REDIS_HOST env var ! Redis_Host environment variable is not set."
+    exit 1;
+fi
+
+if [[ -v REDIS_PORT ]]; then
+    echo "Redis_Port=${REDIS_PORT}" >> /Reina/Bot/.env
+else
+    echo "Missing REDIS_PORT env var ! Redis_Port environment variable is not set."
     exit 1;
 fi
 

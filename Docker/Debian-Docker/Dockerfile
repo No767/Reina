@@ -67,7 +67,7 @@ CMD ["/Reina/start.sh"]
 STOPSIGNAL SIGTERM
 
 LABEL org.opencontainers.image.title="Reina"
-LABEL org.opencontainers.image.description="A production-ready version of Beryl"
+LABEL org.opencontainers.image.description="A high performance, production-ready fork of Beryl"
 LABEL org.opencontainers.image.url="https://github.com/No767/Reina"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 LABEL org.opencontainers.image.source="https://github.com/No767/Reina"
