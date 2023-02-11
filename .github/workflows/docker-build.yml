@@ -50,7 +50,7 @@ jobs:
             ${{ runner.os }}-buildx-v2-debian-ghcr-
 
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Docker/Debian-Docker/Dockerfile
@@ -103,7 +103,7 @@ jobs:
             ${{ runner.os }}-buildx-v2-debian-hub-
 
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Docker/Debian-Docker/Dockerfile
@@ -156,7 +156,7 @@ jobs:
             ${{ runner.os }}-buildx-reina-postgres-hub-
 
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Docker/Postgres-Docker/Dockerfile
