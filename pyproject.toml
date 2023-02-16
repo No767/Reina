@@ -19,7 +19,7 @@ ffmpeg-python = "^0.2.0"
 python-dateutil = "^2.8.2"
 rin-exceptions = "^1.0.3"
 gql = {extras = ["aiohttp"], version = "^3.4.0"}
-numpy = "^1.24.0"
+numpy = "^1.24.2"
 asyncpraw = "^7.6.1"
 tortoise-orm = {extras = ["accel"], version = "^0.19.3"}
 asyncpg = "^0.27.0"
