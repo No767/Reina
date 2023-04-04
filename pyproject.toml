@@ -30,7 +30,7 @@ ormsgpack = "^1.2.5"
 
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^3.2.1"
+pre-commit = "^3.2.2"
 pyinstrument = "^4.4.0"
 
 [tool.isort]
