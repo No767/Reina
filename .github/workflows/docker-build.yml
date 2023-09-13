@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         with:
           version: latest
 
@@ -84,7 +84,7 @@ jobs:
 
       - name: Setup Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         with:
           version: latest
 
@@ -137,7 +137,7 @@ jobs:
 
       - name: Setup Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         with:
           version: latest
 
