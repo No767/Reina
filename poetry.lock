@@ -2,13 +2,13 @@
 
 [[package]]
 name = "aiodns"
-version = "3.0.0"
+version = "3.1.0"
 description = "Simple DNS resolver for asyncio"
 optional = false
 python-versions = "*"
 files = [
-    {file = "aiodns-3.0.0-py3-none-any.whl", hash = "sha256:2b19bc5f97e5c936638d28e665923c093d8af2bf3aa88d35c43417fa25d136a2"},
-    {file = "aiodns-3.0.0.tar.gz", hash = "sha256:946bdfabe743fceeeb093c8a010f5d1645f708a241be849e17edfb0e49e08cd6"},
+    {file = "aiodns-3.1.0-py3-none-any.whl", hash = "sha256:5268c89765a4a17d6875f70686d6ee406a0d4c40f0b65a0a311fb400aecfedf4"},
+    {file = "aiodns-3.1.0.tar.gz", hash = "sha256:fadb59304f4e38fd23b2f1953107df5cf29121d66c4e9c37a9bb13832c0c0513"},
 ]
 
 [package.dependencies]
@@ -1917,4 +1917,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.8,<4.0"
-content-hash = "4eb32774504397096b02d35a87f98fd45490c8e044609610586ae9bb04bd77a7"
+content-hash = "6d7da3ca8a0265aa0b441199be67364f2dbf31981821c2079fd132b61e6ee960"

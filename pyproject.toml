@@ -10,7 +10,7 @@ readme = "README.md"
 python = ">3.8,<4.0"
 py-cord = {extras = ["voice"], version = "^2.4.1"}
 python-dotenv = "^1.0.0"
-aiodns = "^3.0.0"
+aiodns = "^3.1.0"
 brotli = "^1.0.9"
 uvloop = "^0.18.0"
 pysimdjson = "^5.0.2"
