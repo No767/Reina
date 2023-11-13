@@ -1034,32 +1034,32 @@ files = [
 
 [[package]]
 name = "ormsgpack"
-version = "1.3.0"
+version = "1.4.1"
 description = "Fast, correct Python msgpack library supporting dataclasses, datetimes, and numpy"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ormsgpack-1.3.0-cp310-cp310-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:c0830509a464d5f18bd7c88c9406c8e4a38ff2e2c8b33db3b1751576b04328cd"},
-    {file = "ormsgpack-1.3.0-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:c53659e36c3e2cfe26ddfd0ae8c2dc78636fa5b7303775925ce951efae61dad7"},
-    {file = "ormsgpack-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9b415ddce9a559eaef11fc295e8e4c02bc6a979304bfbbf2229873108f96f7b1"},
-    {file = "ormsgpack-1.3.0-cp310-none-win_amd64.whl", hash = "sha256:6e419ce1047167b6dfcce85b11a6c5bc5f5c4038fa7e7b551c7d0f4075e5b3fb"},
-    {file = "ormsgpack-1.3.0-cp311-cp311-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:31a760b34fe40085fad5482f9e530dbf0f865781494be81517ed216cf6fbbbbb"},
-    {file = "ormsgpack-1.3.0-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:172219059c243deeb43f062633cfa69782dbbbd871cd9c2c2b51a9cb6fe4c0f7"},
-    {file = "ormsgpack-1.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:20a619ab39a3dd1b9944ff732da0e468b7217403791467d82561b4c4f6e4d989"},
-    {file = "ormsgpack-1.3.0-cp311-none-win_amd64.whl", hash = "sha256:b5721821543ab136dca34f36f2c18e12a309ddfcf5486df2fabbd0bbb68eae41"},
-    {file = "ormsgpack-1.3.0-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:461d5c58675b74c7609df66c3065c230b839da9e6d46bdbaf4780973cb6e8868"},
-    {file = "ormsgpack-1.3.0-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:f58b4b1b89bf149f95a3fc78a32d101a4c93bfebcf1b317518bd4ee88e6eb31f"},
-    {file = "ormsgpack-1.3.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:771c796fc42723d1b00a0add93511df5d06adfd318995bec5f9dc0e4a170af0f"},
-    {file = "ormsgpack-1.3.0-cp312-none-win_amd64.whl", hash = "sha256:1007ff608fc03611c5163522f2bf5077265e56fa9c680c153590168c0ce81b5f"},
-    {file = "ormsgpack-1.3.0-cp38-cp38-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:4c66a04f1c43a6267ffe954b4dfdbc23013b7d2f003a7dfa483eae26b8b7abff"},
-    {file = "ormsgpack-1.3.0-cp38-cp38-macosx_10_12_x86_64.whl", hash = "sha256:ecec49981e77be89a546c0a4dd38635171c5468d09f43ba1a39839bb310a3d5b"},
-    {file = "ormsgpack-1.3.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:886f362659dfed805c95ada023464bca162a74687e5b3037403a23a2ed4a23eb"},
-    {file = "ormsgpack-1.3.0-cp38-none-win_amd64.whl", hash = "sha256:b9660880dd030eb687086dbee73625d237846e86cc2221539867847266e2360d"},
-    {file = "ormsgpack-1.3.0-cp39-cp39-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:0556133c0f83ed3d57301140be624b0eefe854d4381dc43a2b60c4866246fb92"},
-    {file = "ormsgpack-1.3.0-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:f917b5f2d77bf997756241a030b6c08ab4c4b89ee1fc9277256606ec53503523"},
-    {file = "ormsgpack-1.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:afcd48e283e5bc3e7b6c3f69051c1fdd404e7a8cd4a11e7773d72d2130d6aca9"},
-    {file = "ormsgpack-1.3.0-cp39-none-win_amd64.whl", hash = "sha256:e3d2378af9da9f706b0a581e8e00a8d66999da3b9df3eee90a819324184db931"},
-    {file = "ormsgpack-1.3.0.tar.gz", hash = "sha256:df2cc242204e3e883482fdde66fe68b3a72bbfe6d164e4ec0cc556e419ed9287"},
+    {file = "ormsgpack-1.4.1-cp310-cp310-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:969f6acdfd9af9fb51f65cd5a92e902e384409df3567ce85c2f5ff3510ec4c45"},
+    {file = "ormsgpack-1.4.1-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:e7e0bd764b414dbb51196cdb8c6a892b237149ade79eaadcdeff25f775d85feb"},
+    {file = "ormsgpack-1.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c391fe8edaae80a3e66e6a26ce58edb32d5a6d10bd3b7ec8e2e364095fa7f30f"},
+    {file = "ormsgpack-1.4.1-cp310-none-win_amd64.whl", hash = "sha256:a48a11d8826468385681b12ce5b403b8404390a2410c39a3d0ccc79e46381266"},
+    {file = "ormsgpack-1.4.1-cp311-cp311-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:6987ee003c13e2b826a5219a8edc2d300d1c0dcb602489fa5e7bfd7ccfcefed6"},
+    {file = "ormsgpack-1.4.1-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:eda6e815612b803f8dc8bb5cef9e68453b6f7b5c7b6a160f0dca1e75522c6dbd"},
+    {file = "ormsgpack-1.4.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b44bfe29dc00dee76691fbd5ab1802148321915e902c5f32be1c40c07bbab0a2"},
+    {file = "ormsgpack-1.4.1-cp311-none-win_amd64.whl", hash = "sha256:8c58b0b7160fd8526401d02111e057b91b7359df7b4e7960926e91f8c39e385a"},
+    {file = "ormsgpack-1.4.1-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:01a60c0bad98c5b657f4f2259429fba0c5922806c8bd2546c91e2b3c950dcfd6"},
+    {file = "ormsgpack-1.4.1-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:9cf3efaf4dabd5c67f2cfb81f2920fca9f48c707bfceecbcabd9a53826436d9c"},
+    {file = "ormsgpack-1.4.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1fee368927bf96e517da98fa41ccd02511f310a78c3c86e09226833edd840773"},
+    {file = "ormsgpack-1.4.1-cp312-none-win_amd64.whl", hash = "sha256:62d361e1f518763f90e6d7b53be21f5ba3950185a053514d5c2f7bad7de03106"},
+    {file = "ormsgpack-1.4.1-cp38-cp38-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:ddbbe15f3e305e3eaf6cc9071e4a792cef6c8de399096b58b2fb1b9a424ab6c8"},
+    {file = "ormsgpack-1.4.1-cp38-cp38-macosx_10_12_x86_64.whl", hash = "sha256:c401b50d78784b07b4795a728260d37610a0084c773f718040c7671bbe86dfa5"},
+    {file = "ormsgpack-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:088dbdea632b08350870ec17d88875c497516de65a48b5d0aac4f8cd740e0ad5"},
+    {file = "ormsgpack-1.4.1-cp38-none-win_amd64.whl", hash = "sha256:f078e33505eae7f2a14b4d4e71961494353d4d4afae1341b66a889c1968526e9"},
+    {file = "ormsgpack-1.4.1-cp39-cp39-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:fad94fc3238781ed56283b5a0ab0edc990a9591a1987517d725dd7996100ee97"},
+    {file = "ormsgpack-1.4.1-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:a9d2e1ab48f852b92657f7ae31a6ba23664541237f899c2b6a24a746dcccdf0b"},
+    {file = "ormsgpack-1.4.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ce3062c405c4fcdd4f9cf374053cf4168f0d6606e5411c9db14e404ac8839010"},
+    {file = "ormsgpack-1.4.1-cp39-none-win_amd64.whl", hash = "sha256:a8cd00e082ac3752d289d8f61e6aa91a9ce7d75e7d17a68767149fc45f3f4e10"},
+    {file = "ormsgpack-1.4.1.tar.gz", hash = "sha256:52f4336e7c14e30e42bedba438b5f1eb3e8c8921314f868a5a7a13b6d6ecb17d"},
 ]
 
 [[package]]
@@ -1939,4 +1939,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.8,<4.0"
-content-hash = "ab233f8e319d21140702259e925c59b7250351b63f717744bc97f19bc620d2ca"
+content-hash = "151cd2dc1ef8b03e844c3d282c5b599ea366aa4ad17af8a307dbfadc0a84562a"
