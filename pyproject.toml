@@ -25,7 +25,7 @@ tortoise-orm = {extras = ["accel"], version = "^0.20.0"}
 asyncpg = "^0.29.0"
 coredis = "^4.16.0"
 ciso8601 = "^2.3.1"
-python-rapidjson = "^1.13"
+python-rapidjson = "^1.14"
 ormsgpack = "^1.4.1"
 
 
