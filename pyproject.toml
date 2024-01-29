@@ -31,7 +31,7 @@ ormsgpack = "^1.4.1"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.4.0"
-pyinstrument = "^4.6.1"
+pyinstrument = "^4.6.2"
 
 [tool.isort]
 profile = 'black'
