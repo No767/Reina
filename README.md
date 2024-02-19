@@ -10,6 +10,9 @@
 
 A high performance, production-ready fork of Beryl
 
+> ⚠️ **IMPORTANT**:
+> As of 2/19/2024, Beryl is no longer being actively supported and developed. The repo is now archived to maintain historical content.
+
 <div align=left>
 
 ## Info
